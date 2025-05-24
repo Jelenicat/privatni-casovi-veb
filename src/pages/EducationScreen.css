@@ -1,0 +1,48 @@
+.education-background {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.education-overlay {
+  background-color: rgba(18, 18, 18, 0.92);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(255, 105, 180, 0.2);
+}
+
+.education-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 30px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.button-group button {
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(to right, #ff80ab, #f06292);
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.button-group button:hover {
+  background: linear-gradient(to right, #ff4081, #ec407a);
+}

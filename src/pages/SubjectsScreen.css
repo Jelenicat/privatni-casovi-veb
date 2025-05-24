@@ -1,0 +1,71 @@
+.subjects-background {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  overflow-y: auto;
+}
+
+.subjects-overlay {
+  background-color: rgba(18, 18, 18, 0.92);
+  padding: 40px;
+  max-width: 700px;
+  margin: auto;
+  color: white;
+  min-height: 100vh;
+}
+
+.subjects-overlay h1 {
+  font-size: 26px;
+  color: #ff80ab;
+  margin-bottom: 30px;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.subject-group {
+  background: #1f1f1f;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.group-header {
+  font-size: 18px;
+  font-weight: bold;
+  color: #f06292;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.subject-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+  font-size: 16px;
+}
+
+.subject-item input[type="checkbox"] {
+  accent-color: #f06292;
+  width: 18px;
+  height: 18px;
+}
+
+.search-button {
+  margin-top: 30px;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff80ab, #f06292);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}

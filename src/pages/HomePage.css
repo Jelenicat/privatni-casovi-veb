@@ -1,0 +1,55 @@
+.background {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  background-color: rgba(18, 18, 18, 0.9);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.header .title {
+  color: #fff;
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #ccc;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.buttonsWrapper button {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.gradientButton.pink {
+  background: linear-gradient(to right, #ff80ab, #f06292);
+}
+
+.gradientButton.red {
+  background: linear-gradient(to right, #ec407a, #d81b60);
+}
+
+.gradientButton:hover {
+  opacity: 0.9;
+}
