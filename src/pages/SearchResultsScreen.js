@@ -86,7 +86,11 @@ export default function SearchResultsScreen() {
           </div>
           
         ))
+
       )}
+       <div className="back-button-container">
+      <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
+    </div>
     </div>
   );
 }

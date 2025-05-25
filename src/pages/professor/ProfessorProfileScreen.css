@@ -43,8 +43,9 @@ h2 {
   border: none;
   border-radius: 10px;
   color: #fff;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding:10px;
 }
 
 .react-calendar__tile {
