@@ -25,7 +25,9 @@ export default function LocationScreen({ navigate }) {
 
     navigate(`/subjects?level=${level}&location=${encodeURIComponent(lokacija)}`);
   };
-
+  const handleBack = () => {
+    window.history.back();
+  };
   const gradovi = [
     'Beograd',
     ...SVI_GRADOVI_SRBIJE.filter(g => g !== 'Beograd').sort()

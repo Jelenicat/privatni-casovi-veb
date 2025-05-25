@@ -3,6 +3,10 @@ import './EducationScreen.css';
 import bg1 from '../assets/bg1.jpg';
 
 export default function EducationScreen({ navigate }) {
+  const handleBack = () => {
+    window.history.back();
+  };
+
   return (
     <div className="education-background" style={{ backgroundImage: `url(${bg1})` }}>
       <div className="education-overlay">
