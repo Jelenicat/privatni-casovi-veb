@@ -198,8 +198,10 @@ export default function ProfessorProfileScreenWeb() {
           <input type="text" placeholder="Prezime" value={prezime} onChange={e => setPrezime(e.target.value)} />
           <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
           <input type="tel" placeholder="Telefon" value={telefonUcenika} onChange={e => setTelefonUcenika(e.target.value)} />
-          <button onClick={zakaziCas}>Zakaži čas</button>
-          <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
+          <div className="button-wrapper">
+  <button className="zakazi-button" onClick={zakaziCas}>Zakaži čas</button>
+  <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
+</div>
 
           <h2>📝 Komentari i ocene</h2>
           {mozeOceniti && (
