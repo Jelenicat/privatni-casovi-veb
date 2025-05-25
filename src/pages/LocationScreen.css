@@ -53,3 +53,22 @@ select {
 .location-button:hover {
   opacity: 0.9;
 }
+
+.back-button {
+  margin-top: 20px;
+  padding: 10px 25px;
+  background-color: transparent;
+  border: 2px solid #ff69b4;
+  color: #ff69b4;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.back-button:hover {
+  background-color: #ff69b4;
+  color: white;
+  box-shadow: 0 0 10px #ff69b4;
+}

@@ -12,6 +12,7 @@ export default function EducationScreen({ navigate }) {
           <button onClick={() => navigate('/location?level=srednja')}>Srednja škola</button>
           <button onClick={() => navigate('/location?level=fakultet')}>Fakultet</button>
         </div>
+        <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
       </div>
     </div>
   );

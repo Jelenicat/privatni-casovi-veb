@@ -34,7 +34,7 @@ export default function LocationScreen({ navigate }) {
   return (
     <div className="location-background" style={{ backgroundImage: `url(${bg5})` }}>
       <div className="location-overlay">
-        <h2 className="subtitle">Nivo: {level}</h2>
+      
 
         <h1 className="title">Izaberi grad</h1>
         <select
@@ -69,6 +69,7 @@ export default function LocationScreen({ navigate }) {
         >
           Nastavi
         </button>
+         <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
       </div>
     </div>
   );
