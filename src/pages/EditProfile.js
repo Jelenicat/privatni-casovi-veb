@@ -30,6 +30,7 @@ export default function EditProfile() {
   });
   const [predmeti, setPredmeti] = useState({});
   const [expanded, setExpanded] = useState({});
+  const [isModified, setIsModified] = useState(false);
 
   const gradDropdownRef = useRef();
   const opstinaDropdownRef = useRef();
@@ -74,6 +75,7 @@ export default function EditProfile() {
     const newState = { ...state, [key]: !state[key] };
     if (!newState[key]) delete newState[key];
     stateSetter(newState);
+    setIsModified(true);
   };
 
   const toggleGroup = (group) => {
@@ -98,7 +100,16 @@ export default function EditProfile() {
       predmeti,
     });
     alert('Profil uspešno sačuvan!');
+    setIsModified(false);
     navigate('/my-profile');
+  };
+
+  const handleBack = () => {
+    if (isModified) {
+      alert('Molimo prvo sačuvajte izmene pre nego što se vratite nazad.');
+      return;
+    }
+    navigate(-1);
   };
 
   return (
@@ -106,19 +117,19 @@ export default function EditProfile() {
       <h1 className="edit-title">Izmeni profil</h1>
 
       <label>Ime:</label>
-      <input value={ime} onChange={(e) => setIme(e.target.value)} />
+      <input value={ime} onChange={(e) => { setIme(e.target.value); setIsModified(true); }} />
 
       <label>O meni:</label>
-      <textarea value={opis} onChange={(e) => setOpis(e.target.value)} rows={4} />
+      <textarea value={opis} onChange={(e) => { setOpis(e.target.value); setIsModified(true); }} rows={4} />
 
       <label>Trajanje časa:</label>
       <div className="duration-buttons">
-        <button onClick={() => setTrajanjeCasa('45')} className={trajanjeCasa === '45' ? 'active' : ''}>45 min</button>
-        <button onClick={() => setTrajanjeCasa('60')} className={trajanjeCasa === '60' ? 'active' : ''}>60 min</button>
+        <button onClick={() => { setTrajanjeCasa('45'); setIsModified(true); }} className={trajanjeCasa === '45' ? 'active' : ''}>45 min</button>
+        <button onClick={() => { setTrajanjeCasa('60'); setIsModified(true); }} className={trajanjeCasa === '60' ? 'active' : ''}>60 min</button>
       </div>
 
       <label>Cena časa (RSD):</label>
-      <input value={cena} onChange={(e) => setCena(e.target.value.replace(/[^0-9]/g, ''))} />
+      <input value={cena} onChange={(e) => { setCena(e.target.value.replace(/[^0-9]/g, '')); setIsModified(true); }} />
 
       <label>Email (ne menja se):</label>
       <input value={email} disabled />
@@ -198,6 +209,7 @@ export default function EditProfile() {
               onChange={() => {
                 const updated = { ...nivoi, [nivo]: !nivoi[nivo] };
                 setNivoi(updated);
+                setIsModified(true);
               }}
             />
             <span>{nivo}</span>
@@ -206,6 +218,8 @@ export default function EditProfile() {
       </div>
 
       <button className="save-button" onClick={handleSave}>Sačuvaj</button>
+      <button className="back-button" onClick={handleBack}>⬅ Nazad</button>
+
     </div>
   );
 }

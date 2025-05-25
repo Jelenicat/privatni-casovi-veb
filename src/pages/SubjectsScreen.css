@@ -70,20 +70,46 @@
   cursor: not-allowed;
 }
 .back-button {
+  width: 100%;
   margin-top: 20px;
-  padding: 10px 25px;
-  background-color: transparent;
-  border: 2px solid #f06292;
-  color: #f06292;
-  border-radius: 20px;
+  padding: 14px;
+  border: 2px solid #ff80ab;
+  border-radius: 12px;
+  background: transparent;
+  color: #ff80ab;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-weight: bold;
 }
 
 .back-button:hover {
-  background-color: #f06292;
+  background-color: #ff80ab;
   color: white;
-  box-shadow: 0 0 10px #f06292;
+  box-shadow: 0 0 10px #ff80ab;
 }
+
+@media (max-width: 600px) {
+  .subjects-overlay {
+    padding: 30px 20px;
+  }
+
+  .subjects-overlay h1 {
+    font-size: 22px;
+  }
+
+  .group-header {
+    font-size: 16px;
+  }
+
+  .subject-item {
+    font-size: 15px;
+  }
+
+  .search-button,
+  .back-button {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+

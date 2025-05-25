@@ -62,19 +62,29 @@
 
 .password-wrapper {
   position: relative;
+  width: 100%;
 }
 
 .eye-button {
   position: absolute;
-  right: 14px;
+  right: 6px;
   top: 50%;
   transform: translateY(-50%);
-  background: none;
+  background: #ff80ab;
   border: none;
+  padding: 0;
+  width: 46px;
+  height: 90%;
+  border-radius: 10px;
   font-size: 18px;
-  color: #aaa;
+  color: white;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 6px rgba(255, 128, 171, 0.3);
 }
+
 
 /* Dugme za login */
 

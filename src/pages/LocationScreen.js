@@ -6,9 +6,25 @@ import { SVI_GRADOVI_SRBIJE, OPSTINE_BEOGRADA } from '../constants/serbianCities
 
 
 const opstineBeograd = [
-  'Novi Beograd', 'Zemun', 'Zvezdara', 'Vračar', 'Voždovac',
-  'Palilula', 'Rakovica', 'Savski venac', 'Stari grad', 'Čukarica'
+  'Barajevo',
+  'Čukarica',
+  'Grocka',
+  'Lazarevac',
+  'Mladenovac',
+  'Novi Beograd',
+  'Obrenovac',
+  'Palilula',
+  'Rakovica',
+  'Savski venac',
+  'Sopot',
+  'Stari grad',
+  'Surčin',
+  'Voždovac',
+  'Vračar',
+  'Zemun',
+  'Zvezdara'
 ];
+
 
 export default function LocationScreen({ navigate }) {
   const [selectedGrad, setSelectedGrad] = useState('');
