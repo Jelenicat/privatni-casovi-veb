@@ -3,6 +3,7 @@ import './LoginScreen.css';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
+import bg3 from '../assets/bg3.jpg'; // koristiš bg3
 
 export default function LoginScreen() {
   const navigate = useNavigate();
@@ -26,40 +27,48 @@ export default function LoginScreen() {
   };
 
   return (
-    <div className="login-container">
-      <h1 className="login-title">Prijava profesora</h1>
+    <div className="login-background" style={{ backgroundImage: `url(${bg3})` }}>
+      <div className="login-overlay">
+        <div className="login-container">
+          <h1 className="login-title">Prijava profesora</h1>
 
-      <input
-        type="email"
-        className="login-input"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+          <input
+            type="email"
+            className="login-input"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-      <div className="password-wrapper">
-        <input
-          type={showPassword ? 'text' : 'password'}
-          className="login-input"
-          placeholder="Lozinka"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={() => setShowPassword(!showPassword)} className="eye-button">
-          {showPassword ? '🚫' : '👁'}
-        </button>
+          <div className="password-wrapper">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              className="login-input"
+              placeholder="Lozinka"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button onClick={() => setShowPassword(!showPassword)} className="eye-button">
+              {showPassword ? '🚫' : '👁'}
+            </button>
+          </div>
+
+          <button className="login-button" onClick={handleLogin}>
+            Prijavi se
+          </button>
+
+          <p className="login-link">
+            Nemate nalog?{' '}
+            <span className="login-link-highlight" onClick={() => navigate('/register')}>
+              Registrujte se
+            </span>
+          </p>
+
+          <button className="login-back-button" onClick={() => window.history.back()}>
+            ⟵ Nazad
+          </button>
+        </div>
       </div>
-
-      <button className="login-button" onClick={handleLogin}>
-        Prijavi se
-      </button>
-
-      <p className="login-link">
-        Nemate nalog?{' '}
-        <span className="login-link-highlight" onClick={() => navigate('/register')}>
-          Registrujte se
-        </span>
-      </p>
     </div>
   );
 }

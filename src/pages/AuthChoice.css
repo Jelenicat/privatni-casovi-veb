@@ -54,3 +54,21 @@
 .auth-button:hover {
   opacity: 0.9;
 }
+.auth-back-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #ff80ab;
+  border-radius: 12px;
+  background: none;
+  color: #ff80ab;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.auth-back-button:hover {
+  background-color: #ff80ab;
+  color: white;
+  box-shadow: 0 0 8px #ff80ab;
+}

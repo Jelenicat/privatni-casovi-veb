@@ -58,7 +58,6 @@ export default function SearchResultsScreen() {
   return (
     <div className="results-container">
       <h1 className="results-title">Rezultati pretrage</h1>
-      <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
 
       {profesori.length === 0 ? (
         <p className="no-results">Nema dostupnih profesora za izabrane kriterijume.</p>

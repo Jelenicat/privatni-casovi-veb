@@ -1,14 +1,35 @@
-.login-container {
-  max-width: 400px;
-  margin: 80px auto;
-  background-color: rgba(31, 31, 31, 0.95);
-  padding: 30px 25px;
+/* Pozadina sa slikom i overlay */
+
+.login-background {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-overlay {
+  background-color: rgba(18, 18, 18, 0.85);
+  width: 100%;
+  max-width: 500px;
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(255, 128, 171, 0.2);
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
+  padding: 30px 25px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(8px);
 }
+
+/* Glavni kontejner forme */
+
+.login-container {
+  width: 100%;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Naslov */
 
 .login-title {
   text-align: center;
@@ -17,6 +38,8 @@
   color: #ff80ab;
   font-weight: bold;
 }
+
+/* Input polja */
 
 .login-input {
   width: 100%;
@@ -35,6 +58,8 @@
   border-color: #ff80ab;
 }
 
+/* Ikonica za prikaz lozinke */
+
 .password-wrapper {
   position: relative;
 }
@@ -50,6 +75,8 @@
   color: #aaa;
   cursor: pointer;
 }
+
+/* Dugme za login */
 
 .login-button {
   width: 100%;
@@ -68,6 +95,8 @@
   opacity: 0.9;
 }
 
+/* Link za registraciju */
+
 .login-link {
   margin-top: 20px;
   text-align: center;
@@ -81,10 +110,32 @@
   cursor: pointer;
 }
 
-/* RESPONSIVE */
+/* Dugme za povratak */
+
+.login-back-button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border: 2px solid #ff80ab;
+  border-radius: 12px;
+  background: transparent;
+  color: #ff80ab;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-back-button:hover {
+  background-color: #ff80ab;
+  color: white;
+  box-shadow: 0 0 10px #ff80ab;
+}
+
+/* Responsive prilagođavanje */
+
 @media (max-width: 600px) {
-  .login-container {
-    margin: 40px 16px;
+  .login-overlay {
     padding: 24px 20px;
     border-radius: 14px;
   }
@@ -105,5 +156,10 @@
 
   .login-link {
     font-size: 13px;
+  }
+
+  .login-back-button {
+    font-size: 15px;
+    padding: 11px;
   }
 }

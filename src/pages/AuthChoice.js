@@ -18,6 +18,9 @@ export default function AuthChoice() {
         <button className="auth-button outlined" onClick={() => navigate('/register')}>
           Registruj se
         </button>
+         <button className="auth-back-button" onClick={() => window.history.back()}>
+          ⟵ Nazad
+        </button>
       </div>
     </div>
   );
