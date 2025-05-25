@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Test Icon Load</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: sans-serif;
+      padding: 30px;
+    }
+    img {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      border: 2px solid #fff;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Test ikonice iz <code>public/</code> foldera</h1>
+  <p>🧪 Ako se ikonice učitaju ispod, sve radi kako treba!</p>
+
+  <div>
+    <p>apple-icon.png:</p>
+    <img src="/apple-icon.png" alt="apple-icon.png" onerror="this.alt='NE RADI'" />
+  </div>
+
+  <div>
+    <p>icon-192.png:</p>
+    <img src="/icon-192.png" alt="icon-192.png" onerror="this.alt='NE RADI'" />
+  </div>
+
+  
+</body>
+</html>
