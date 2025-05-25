@@ -8,7 +8,9 @@ export default function SearchResultsScreen() {
   const [profesori, setProfesori] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
-
+  const handleBack = () => {
+  window.history.back();
+};
   const queryParams = new URLSearchParams(location.search);
   const level = queryParams.get('level');
   const locationParam = queryParams.get('location');
@@ -56,6 +58,7 @@ export default function SearchResultsScreen() {
   return (
     <div className="results-container">
       <h1 className="results-title">Rezultati pretrage</h1>
+      <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
 
       {profesori.length === 0 ? (
         <p className="no-results">Nema dostupnih profesora za izabrane kriterijume.</p>
@@ -81,6 +84,7 @@ export default function SearchResultsScreen() {
               💰 {prof.cena ? `${prof.cena} RSD po času` : 'Cena nije navedena'}
             </p>
           </div>
+          
         ))
       )}
     </div>

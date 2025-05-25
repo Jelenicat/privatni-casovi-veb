@@ -58,8 +58,8 @@ select {
   margin-top: 20px;
   padding: 10px 25px;
   background-color: transparent;
-  border: 2px solid #ff69b4;
-  color: #ff69b4;
+  border: 2px solid #f06292;
+  color: #f06292;
   border-radius: 20px;
   font-size: 16px;
   cursor: pointer;
@@ -68,7 +68,7 @@ select {
 }
 
 .back-button:hover {
-  background-color: #ff69b4;
+  background-color: #f06292;
   color: white;
-  box-shadow: 0 0 10px #ff69b4;
+  box-shadow: 0 0 10px #f06292;
 }

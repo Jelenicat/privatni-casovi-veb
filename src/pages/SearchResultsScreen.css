@@ -58,3 +58,22 @@
   font-size: 14px;
   font-weight: bold;
 }
+
+.back-button {
+  margin-top: 20px;
+  padding: 10px 25px;
+  background-color: transparent;
+  border: 2px solid #f06292;
+  color: #f06292;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.back-button:hover {
+  background-color: #f06292;
+  color: white;
+  box-shadow: 0 0 10px #f06292;
+}

@@ -14,6 +14,9 @@ const KATEGORIJE_PREDMETA = {
 
 export default function SubjectsScreen() {
   const navigate = useNavigate();
+  const handleBack = () => {
+  window.history.back();
+};
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const level = queryParams.get('level');
@@ -70,6 +73,7 @@ export default function SubjectsScreen() {
         >
           Pretraži profesore
         </button>
+        <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
       </div>
     </div>
   );

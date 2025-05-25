@@ -12,7 +12,9 @@ import { db } from '../../firebase/firebase';
 export default function ProfessorProfileScreenWeb() {
   const { id } = useParams();
   const navigate = useNavigate();
-
+  const handleBack = () => {
+  window.history.back();
+};
   const [professor, setProfessor] = useState(null);
   const [slots, setSlots] = useState({});
   const [selectedDate, setSelectedDate] = useState(null);
@@ -197,6 +199,7 @@ export default function ProfessorProfileScreenWeb() {
           <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
           <input type="tel" placeholder="Telefon" value={telefonUcenika} onChange={e => setTelefonUcenika(e.target.value)} />
           <button onClick={zakaziCas}>Zakaži čas</button>
+          <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
 
           <h2>📝 Komentari i ocene</h2>
           {mozeOceniti && (
