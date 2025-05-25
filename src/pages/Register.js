@@ -4,6 +4,8 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase/firebase';
 import './Register.css';
+import bg8 from '../assets/bg8.jpg';
+
 
 export default function Register() {
   const navigate = useNavigate();
@@ -51,29 +53,37 @@ export default function Register() {
     }
   };
 
-  return (
-    <div className="register-container">
-      <h1>Registracija profesora</h1>
-      {error && <p className="error-message">{error}</p>}
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Lozinka"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Potvrdi lozinku"
-        value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
-      />
-      <button onClick={handleRegister}>Registruj se</button>
+return (
+  <div className="register-background" style={{ backgroundImage: `url(${bg8})` }}>
+    <div className="register-overlay">
+      <div className="register-container">
+        <h1>Registracija profesora</h1>
+        {error && <p className="error-message">{error}</p>}
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Lozinka"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Potvrdi lozinku"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <button onClick={handleRegister}>Registruj se</button>
+        <button className="register-back-button" onClick={() => window.history.back()}>
+          ⟵ Nazad
+        </button>
+      </div>
     </div>
-  );
+  </div>
+);
+
 }
