@@ -1,6 +1,15 @@
 {
   "cleanUrls": false,
   "rewrites": [
-    { "source": "/test-icons.html", "destination": "/test-icons.html" }
+    {
+      "source": "/test-icons.html",
+      "destination": "/test-icons.html"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/test-icons.html",
+      "dest": "/test-icons.html"
+    }
   ]
 }
