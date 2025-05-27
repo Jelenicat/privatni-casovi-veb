@@ -29,6 +29,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-items: center;
 }
 
 .button-group button {
@@ -41,13 +42,15 @@
   color: white;
   cursor: pointer;
   transition: background 0.3s ease;
+  width: 100%;
+  max-width: 300px;
 }
 
 .button-group button:hover {
   background: linear-gradient(to right, #ff4081, #ec407a);
 }
+
 .back-button {
-  width: 100%;
   margin-top: 30px;
   padding: 14px;
   border: 2px solid #ff80ab;
@@ -58,30 +61,13 @@
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  align-self: center;
 }
 
 .back-button:hover {
   background-color: #ff80ab;
   color: white;
   box-shadow: 0 0 10px #ff80ab;
-}
-@media (max-width: 600px) {
-  .education-overlay {
-    padding: 30px 20px;
-    border-radius: 16px;
-  }
-
-  .education-title {
-    font-size: 24px;
-  }
-
-  .button-group button {
-    font-size: 16px;
-    padding: 12px;
-  }
-
-  .back-button {
-    font-size: 15px;
-    padding: 12px;
-  }
 }
