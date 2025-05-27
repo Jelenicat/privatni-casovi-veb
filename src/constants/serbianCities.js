@@ -9,6 +9,22 @@ export const SVI_GRADOVI_SRBIJE = [
 ];
 
 export const OPSTINE_BEOGRADA = [
-  'Novi Beograd', 'Zemun', 'Voždovac', 'Vračar', 'Zvezdara',
-  'Palilula', 'Stari Grad', 'Savski Venac', 'Čukarica',
+  'Barajevo',
+  'Čukarica',
+  'Grocka',
+  'Lazarevac',
+  'Mladenovac',
+  'Novi Beograd',
+  'Obrenovac',
+  'Palilula',
+  'Rakovica',
+  'Savski Venac',
+  'Sopot',
+  'Stari Grad',
+  'Surčin',
+  'Voždovac',
+  'Vračar',
+  'Zemun',
+  'Zvezdara'
 ];
+

@@ -14,9 +14,6 @@ const KATEGORIJE_PREDMETA = {
 
 export default function SubjectsScreen() {
   const navigate = useNavigate();
-  const handleBack = () => {
-  window.history.back();
-};
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const level = queryParams.get('level');
@@ -43,6 +40,10 @@ export default function SubjectsScreen() {
     navigate(`/search-results?${query}`);
   };
 
+  const handleBack = () => {
+    window.history.back();
+  };
+
   return (
     <div className="subjects-background" style={{ backgroundImage: `url(${bg6})` }}>
       <div className="subjects-overlay">
@@ -66,14 +67,18 @@ export default function SubjectsScreen() {
           </div>
         ))}
 
-        <button
-          onClick={handleSearch}
-          disabled={Object.keys(selectedSubjects).length === 0}
-          className="search-button"
-        >
-          Pretraži profesore
-        </button>
-        <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
+        <div className="button-group">
+          <button
+            onClick={handleSearch}
+            disabled={Object.keys(selectedSubjects).length === 0}
+            className="search-button"
+          >
+            Pretraži profesore
+          </button>
+          <button className="back-button" onClick={handleBack}>
+            ⟵ Nazad
+          </button>
+        </div>
       </div>
     </div>
   );
