@@ -58,33 +58,29 @@
   border-color: #ff80ab;
 }
 
-/* Ikonica za prikaz lozinke */
+/* Prikaz lozinke unutar polja */
 
 .password-wrapper {
   position: relative;
   width: 100%;
 }
 
-.eye-button {
-  position: absolute;
-  right: 6px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #ff80ab;
-  border: none;
-  padding: 0;
-  width: 46px;
-  height: 90%;
-  border-radius: 10px;
-  font-size: 18px;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 6px rgba(255, 128, 171, 0.3);
+.password-input {
+  padding-right: 44px;
 }
 
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  cursor: pointer;
+  color: #ff80ab;
+  background: transparent;
+  border: none;
+  z-index: 2;
+}
 
 /* Dugme za login */
 

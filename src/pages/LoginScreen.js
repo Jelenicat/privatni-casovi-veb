@@ -43,14 +43,17 @@ export default function LoginScreen() {
           <div className="password-wrapper">
             <input
               type={showPassword ? 'text' : 'password'}
-              className="login-input"
+              className="login-input password-input"
               placeholder="Lozinka"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button onClick={() => setShowPassword(!showPassword)} className="eye-button">
-              {showPassword ? '🚫' : '👁'}
-            </button>
+            <span
+              className="toggle-password"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? '🙈' : '👁️'}
+            </span>
           </div>
 
           <button className="login-button" onClick={handleLogin}>
