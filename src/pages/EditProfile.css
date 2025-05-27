@@ -98,7 +98,6 @@ textarea {
   background: none;
   border: none;
   color: #f06292;
-  font-family: 'PoppinsBold';
   font-size: 17px;
   cursor: pointer;
   text-align: left;
@@ -115,7 +114,6 @@ textarea {
   display: flex;
   align-items: center;
   margin-bottom: 8px;
-  font-family: 'Poppins';
   font-size: 15px;
 }
 
@@ -158,7 +156,7 @@ textarea {
   display: flex;
   flex-direction: column;
   position: relative;
-  font-family: 'Poppins';
+
 }
 
 
@@ -167,7 +165,6 @@ textarea {
   align-items: center;
   font-size: 15px;
   color: #fff;
-  font-family: 'Poppins';
   cursor: pointer;
   gap: 6px;
   padding: 4px 8px;

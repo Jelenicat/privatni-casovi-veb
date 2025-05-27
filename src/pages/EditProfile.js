@@ -218,7 +218,7 @@ export default function EditProfile() {
       </div>
 
       <button className="save-button" onClick={handleSave}>Sačuvaj</button>
-      <button className="back-button" onClick={handleBack}>⬅ Nazad</button>
+      <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
 
     </div>
   );
