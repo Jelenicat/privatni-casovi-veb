@@ -52,7 +52,7 @@ export default function LoginScreen() {
               className="toggle-password"
               onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? '🙈' : '👁️'}
+              {showPassword ? '✖' : '👁'}
             </span>
           </div>
 

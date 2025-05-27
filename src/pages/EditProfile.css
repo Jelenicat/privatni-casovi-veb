@@ -189,3 +189,29 @@ textarea {
 .checkbox-item span {
   white-space: nowrap;
 }
+@media (max-width: 600px) {
+  .checkbox-dropdown {
+    padding: 10px;
+    max-height: 200px;
+  }
+
+  .checkbox-item {
+    padding: 8px;
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  .checkbox-item span {
+    font-size: 14px;
+  }
+
+  .dropdown-toggle {
+    font-size: 15px;
+    padding: 10px;
+  }
+}
