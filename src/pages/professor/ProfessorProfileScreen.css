@@ -186,3 +186,8 @@ textarea {
   font-weight: bold;
   box-shadow: 0 0 8px #ff80ab;
 }
+.slot:disabled {
+  background-color: #333 !important;
+  color: #999 !important;
+  cursor: not-allowed !important;
+}

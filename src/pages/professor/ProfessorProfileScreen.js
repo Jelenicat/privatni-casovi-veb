@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './ProfessorProfileScreen.css';
 import Calendar from 'react-calendar';
@@ -184,7 +185,9 @@ export default function ProfessorProfileScreenWeb() {
           <h2>📅 Dostupni termini</h2>
           <Calendar
             onClickDay={(value) => setSelectedDate(value.toISOString().split('T')[0])}
-            tileClassName={({ date, view }) => {
+            minDate={new Date()}
+            tileDisabled={({ date }) => date < new Date(new Date().setHours(0, 0, 0, 0))}
+            tileClassName={({ date }) => {
               const key = date.toISOString().split('T')[0];
               return slots[key] ? 'highlighted-day' : null;
             }}
@@ -193,15 +196,23 @@ export default function ProfessorProfileScreenWeb() {
           {selectedDate && (
             <div className="slot-list">
               {slots[selectedDate]?.length > 0 ? (
-                slots[selectedDate].map((vreme, i) => (
-                  <button
-                    key={i}
-                    className={`slot ${selectedSlot?.dan === selectedDate && selectedSlot?.vreme === vreme ? 'selected' : ''}`}
-                    onClick={() => setSelectedSlot({ dan: selectedDate, vreme })}
-                  >
-                    {vreme}
-                  </button>
-                ))
+                slots[selectedDate].map((vreme, i) => {
+                  const [h, m] = vreme.split(':').map(Number);
+                  const datumIVreme = new Date(selectedDate);
+                  datumIVreme.setHours(h, m, 0, 0);
+                  const isPast = datumIVreme < new Date();
+                  return (
+                    <button
+                      key={i}
+                      className={`slot ${selectedSlot?.dan === selectedDate && selectedSlot?.vreme === vreme ? 'selected' : ''}`}
+                      onClick={() => !isPast && setSelectedSlot({ dan: selectedDate, vreme })}
+                      disabled={isPast}
+                      style={isPast ? { backgroundColor: '#333', color: '#999', cursor: 'not-allowed' } : {}}
+                    >
+                      {vreme}
+                    </button>
+                  );
+                })
               ) : (
                 <p className="info">Nema slobodnih termina za ovaj dan.</p>
               )}
