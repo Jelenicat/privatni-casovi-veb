@@ -8,7 +8,7 @@ export default function HomePage({ navigate }) {
       <div className="overlay">
         <div className="header">
           <h1 className="title">Dobrodošli</h1>
-          <p className="subtitle">Pronađi profesora za privatne časove</p>
+          <p className="subtitle">Pronađi profesora za privatne časove ili postani profesor</p>
         </div>
 
         <div className="buttonsWrapper">
