@@ -45,7 +45,7 @@ h2 {
   color: #fff;
   margin-top: 40px;
   margin-bottom: 40px;
-  padding:10px;
+  padding: 10px;
 }
 
 .react-calendar__tile {
@@ -71,6 +71,14 @@ h2 {
   color: #fff;
 }
 
+.highlighted-day {
+  background-color: #ff80ab !important;
+  color: white !important;
+  border-radius: 50%;
+  font-weight: bold;
+  box-shadow: 0 0 8px #ff80ab;
+}
+
 .slot-list {
   margin-top: 10px;
   margin-bottom: 20px;
@@ -93,6 +101,12 @@ h2 {
 .slot.selected {
   background-color: #ff69b4;
   color: #fff;
+}
+
+.slot:disabled {
+  background-color: #333 !important;
+  color: #999 !important;
+  cursor: not-allowed !important;
 }
 
 input,
@@ -179,31 +193,30 @@ textarea {
   color: white;
   box-shadow: 0 0 10px #ff69b4;
 }
-.highlighted-day {
-  background-color: #ff80ab !important;
-  color: white !important;
-  border-radius: 50%;
-  font-weight: bold;
-  box-shadow: 0 0 8px #ff80ab;
-}
-.slot:disabled {
-  background-color: #333 !important;
-  color: #999 !important;
-  cursor: not-allowed !important;
-}
-.react-calendar__navigation button {
-  background: transparent;
-  color: #aaa;
-  font-size: 24px;
-}
 
-.react-calendar__navigation button:disabled {
-  color: #555;
-}
-
+/* Strelice u navigaciji kalendara */
 .react-calendar__navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+}
+
+.react-calendar__navigation button {
+  background-color: #2a2a2a;
+  color: #ff80ab;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 24px;
+  transition: background-color 0.3s;
+}
+
+.react-calendar__navigation button:hover {
+  background-color: #3a3a3a;
+}
+
+.react-calendar__navigation button:disabled {
+  background-color: #1a1a1a;
+  color: #555;
 }
