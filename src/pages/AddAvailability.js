@@ -238,7 +238,6 @@ export default function AddAvailability() {
             border: 'none',
             cursor: 'pointer',
             transition: 'transform 0.2s, opacity 0.2s',
-            fontFamily: 'PoppinsBold',
             marginTop: '10px'
           }}
           onClick={handleBackToProfile}
