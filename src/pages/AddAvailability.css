@@ -5,14 +5,12 @@
   background: linear-gradient(135deg, #1f1f1f, #2c2c2c);
   border-radius: 20px;
   box-shadow: 0 0 30px rgba(240, 98, 146, 0.35);
-  font-family: 'Poppins', sans-serif;
   color: #fff;
   text-align: center;
 }
 
 .availability-title {
   font-size: 32px;
-  font-family: 'PoppinsBold';
   color: #ff80ab;
   margin-bottom: 30px;
 }
@@ -22,7 +20,6 @@
   margin-bottom: 20px;
   color: #f06292;
   font-size: 22px;
-  font-family: 'PoppinsBold';
 }
 
 .slots-grid {
@@ -77,7 +74,6 @@
 .delete-btn {
   padding: 14px 28px;
   font-size: 16px;
-  font-family: 'PoppinsBold';
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -115,7 +111,6 @@
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  font-family: 'PoppinsBold';
   transition: transform 0.2s, opacity 0.2s;
 }
 
