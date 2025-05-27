@@ -220,3 +220,11 @@ textarea {
   background-color: #1a1a1a;
   color: #555;
 }
+.react-calendar__navigation__arrow {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+.react-calendar__navigation__arrow:focus {
+  outline: none;
+  box-shadow: none;
+}
