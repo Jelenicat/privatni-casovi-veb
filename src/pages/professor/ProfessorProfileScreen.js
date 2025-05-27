@@ -1,4 +1,3 @@
-// Web verzija fajla ProfessorProfileScreen.js sa kompletnim funkcijama
 import React, { useEffect, useState } from 'react';
 import './ProfessorProfileScreen.css';
 import Calendar from 'react-calendar';
@@ -12,9 +11,8 @@ import { db } from '../../firebase/firebase';
 export default function ProfessorProfileScreenWeb() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const handleBack = () => {
-  window.history.back();
-};
+  const handleBack = () => window.history.back();
+
   const [professor, setProfessor] = useState(null);
   const [slots, setSlots] = useState({});
   const [selectedDate, setSelectedDate] = useState(null);
@@ -75,8 +73,7 @@ export default function ProfessorProfileScreenWeb() {
     }
 
     const selectedDateTime = new Date(`${selectedSlot.dan}T${selectedSlot.vreme}`);
-    const now = new Date();
-    if (selectedDateTime < now) {
+    if (selectedDateTime < new Date()) {
       alert('Ne možete zakazati čas u prošlosti.');
       return;
     }
@@ -109,20 +106,19 @@ export default function ProfessorProfileScreenWeb() {
         return;
       }
 
-    await fetch('https://email-api-jelenas-projects-7386403f.vercel.app/api/sendEmail', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    ime,
-    prezime,
-    email,
-    datum: selectedSlot.dan,
-    vreme: selectedSlot.vreme,
-    telefonUcenika,
-    profesorEmail: professor.email,
-  }),
-});
-
+      await fetch('https://email-api-jelenas-projects-7386403f.vercel.app/api/sendEmail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ime,
+          prezime,
+          email,
+          datum: selectedSlot.dan,
+          vreme: selectedSlot.vreme,
+          telefonUcenika,
+          profesorEmail: professor.email,
+        }),
+      });
 
       alert('Rezervacija uspešna! Email poslat.');
       navigate('/');
@@ -137,12 +133,14 @@ export default function ProfessorProfileScreenWeb() {
       alert('Unesite i ocenu i komentar.');
       return;
     }
+
     const q = query(collection(db, 'profesori', id, 'oceneKomentari'), where('email', '==', email));
     const snapshot = await getDocs(q);
     if (!snapshot.empty) {
       alert('Već ste ocenili ovog profesora.');
       return;
     }
+
     await addDoc(collection(db, 'profesori', id, 'oceneKomentari'), {
       email,
       komentar,
@@ -163,16 +161,32 @@ export default function ProfessorProfileScreenWeb() {
           <h1>{professor.ime}</h1>
           <p className="info">📚 {Object.entries(professor.predmeti || {}).filter(([, v]) => v).map(([k]) => k).join(', ')}</p>
           <p className="info">🎓 {Object.entries(professor.nivoi || {}).filter(([, v]) => v).map(([k]) => k).join(', ')}</p>
-          <p className="info">📍 {Object.entries(professor.gradovi || {}).filter(([, v]) => v).map(([k]) => k).join(', ')}</p>
+          <p className="info">📍 {
+            Object.keys(professor.gradovi || {}).map((grad) => {
+              if (grad === 'Beograd' && professor.opstine) {
+                const izabraneOpstine = Object.keys(professor.opstine).filter(op => professor.opstine[op]);
+                if (izabraneOpstine.length > 0) {
+                  return izabraneOpstine.map(op => `Beograd - ${op}`).join(', ');
+                }
+              }
+              return grad;
+            }).join(', ')
+          }</p>
           <p className="info">💰 {professor.cena ? `${professor.cena} RSD` : 'Nije navedena'}</p>
-          {professor.opis && <><h2>🧾 O profesoru</h2><p className="info">{professor.opis}</p></>}
+
+          {professor.opis && (
+            <>
+              <h2>🧾 O profesoru</h2>
+              <p className="info">{professor.opis}</p>
+            </>
+          )}
 
           <h2>📅 Dostupni termini</h2>
           <Calendar
             onClickDay={(value) => setSelectedDate(value.toISOString().split('T')[0])}
             tileClassName={({ date, view }) => {
               const key = date.toISOString().split('T')[0];
-              return slots[key] ? 'available-day' : null;
+              return slots[key] ? 'highlighted-day' : null;
             }}
           />
 
@@ -198,10 +212,11 @@ export default function ProfessorProfileScreenWeb() {
           <input type="text" placeholder="Prezime" value={prezime} onChange={e => setPrezime(e.target.value)} />
           <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
           <input type="tel" placeholder="Telefon" value={telefonUcenika} onChange={e => setTelefonUcenika(e.target.value)} />
+
           <div className="button-wrapper">
-  <button className="zakazi-button" onClick={zakaziCas}>Zakaži čas</button>
-  <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
-</div>
+            <button className="zakazi-button" onClick={zakaziCas}>Zakaži čas</button>
+            <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
+          </div>
 
           <h2>📝 Komentari i ocene</h2>
           {mozeOceniti && (

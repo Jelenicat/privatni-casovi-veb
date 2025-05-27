@@ -77,7 +77,15 @@ export default function SearchResultsScreen() {
               </p>
             )}
             <p className="prof-info">
-              📍 {Object.keys(prof.gradovi || {}).filter((g) => prof.gradovi[g]).join(', ')}
+              📍 {Object.keys(prof.gradovi || {}).map((grad) => {
+                if (grad === 'Beograd' && prof.opstine) {
+                  const izabraneOpstine = Object.keys(prof.opstine).filter(op => prof.opstine[op]);
+                  if (izabraneOpstine.length > 0) {
+                    return izabraneOpstine.map(op => `Beograd - ${op}`).join(', ');
+                  }
+                }
+                return grad;
+              }).join(', ')}
             </p>
             <p className="prof-info">
               📚 {Object.keys(prof.predmeti || {}).filter((p) => prof.predmeti[p]).join(', ')}
