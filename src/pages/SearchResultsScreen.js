@@ -8,15 +8,16 @@ export default function SearchResultsScreen() {
   const [profesori, setProfesori] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
+
   const handleBack = () => {
-  window.history.back();
-};
+    window.history.back();
+  };
+
   const queryParams = new URLSearchParams(location.search);
   const level = queryParams.get('level');
   const locationParam = queryParams.get('location');
   const subjects = JSON.parse(queryParams.get('subjects') || '{}');
 
-  // Mapiranje "friendly" vrednosti u one koje koristi Firestore
   const LEVEL_MAP = {
     osnovna: 'Osnovna škola',
     srednja: 'Srednja škola',
@@ -31,8 +32,6 @@ export default function SearchResultsScreen() {
       const lista = [];
 
       const [grad, opstina] = locationParam?.split(' - ') || [];
-      const g = grad ? { [grad]: true } : {};
-      const o = opstina ? { [opstina]: true } : {};
       const s = subjects;
 
       snap.forEach((doc) => {
@@ -40,11 +39,18 @@ export default function SearchResultsScreen() {
         const id = doc.id;
 
         const nivoMatch = data.nivoi?.[levelFromParam] === true;
-        const gradMatch = Object.keys(g).some((k) => g[k] && data.gradovi?.[k]);
-        const opstinaMatch = Object.keys(o).some((k) => o[k] && data.opstine?.[k]);
         const predmetMatch = Object.keys(s).some((k) => s[k] && data.predmeti?.[k]);
 
-        if (nivoMatch && (gradMatch || opstinaMatch) && predmetMatch) {
+        const passedLocationCheck = (() => {
+          if (grad && opstina) {
+            return data.gradovi?.[grad] && data.opstine?.[opstina];
+          } else if (grad) {
+            return data.gradovi?.[grad];
+          }
+          return false;
+        })();
+
+        if (nivoMatch && passedLocationCheck && predmetMatch) {
           lista.push({ id, ...data });
         }
       });
@@ -83,13 +89,12 @@ export default function SearchResultsScreen() {
               💰 {prof.cena ? `${prof.cena} RSD po času` : 'Cena nije navedena'}
             </p>
           </div>
-          
         ))
-
       )}
-       <div className="back-button-container">
-      <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
-    </div>
+
+      <div className="back-button-container">
+        <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
+      </div>
     </div>
   );
 }

@@ -76,6 +76,9 @@
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
+
+  width: 100%;
+  max-width: 300px;
 }
 
 .back-button:hover {
@@ -84,3 +87,8 @@
   box-shadow: 0 0 10px #ff69b4;
 }
 
+@media (min-width: 768px) {
+  .back-button {
+    width: auto;
+  }
+}

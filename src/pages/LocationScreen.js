@@ -5,25 +5,6 @@ import bg5 from '../assets/bg5.jpg';
 import { SVI_GRADOVI_SRBIJE, OPSTINE_BEOGRADA } from '../constants/serbianCities';
 
 
-const opstineBeograd = [
-  'Barajevo',
-  'Čukarica',
-  'Grocka',
-  'Lazarevac',
-  'Mladenovac',
-  'Novi Beograd',
-  'Obrenovac',
-  'Palilula',
-  'Rakovica',
-  'Savski venac',
-  'Sopot',
-  'Stari grad',
-  'Surčin',
-  'Voždovac',
-  'Vračar',
-  'Zemun',
-  'Zvezdara'
-];
 
 
 export default function LocationScreen({ navigate }) {
@@ -35,9 +16,12 @@ export default function LocationScreen({ navigate }) {
   const level = queryParams.get('level');
 
   const handleNext = () => {
-    const lokacija = selectedGrad === 'Beograd'
-      ? `${selectedGrad} - ${selectedOpstina}`
-      : selectedGrad;
+const lokacija = selectedGrad === 'Beograd'
+  ? selectedOpstina
+    ? `${selectedGrad} - ${selectedOpstina}`
+    : selectedGrad // sve opštine
+  : selectedGrad;
+
 
     navigate(`/subjects?level=${level}&location=${encodeURIComponent(lokacija)}`);
   };
@@ -73,9 +57,9 @@ export default function LocationScreen({ navigate }) {
             <h2 className="subtitle">Izaberi opštinu</h2>
             <select value={selectedOpstina} onChange={(e) => setSelectedOpstina(e.target.value)}>
               <option value="">-- Odaberi opštinu --</option>
-              {opstineBeograd.map((opstina) => (
-                <option key={opstina} value={opstina}>{opstina}</option>
-              ))}
+            {OPSTINE_BEOGRADA.map((opstina) => (
+  <option key={opstina} value={opstina}>{opstina}</option>
+))}
             </select>
           </>
         )}
