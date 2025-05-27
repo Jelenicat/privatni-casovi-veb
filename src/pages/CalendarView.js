@@ -123,7 +123,6 @@ export default function CalendarView() {
               border: 'none',
               cursor: 'pointer',
               transition: 'transform 0.2s, opacity 0.2s',
-              fontFamily: 'PoppinsBold'
             }}
             onClick={() => navigate('/my-profile')}
             onMouseOver={e => e.currentTarget.style.opacity = '0.9'}
