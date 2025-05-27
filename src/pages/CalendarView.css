@@ -116,10 +116,10 @@
 
 .page-title {
   color: #f06292;
-  font-family: 'PoppinsBold';
   text-align: center;
   font-size: 28px;
   margin-bottom: 20px;
+  margin-top:20px;
 }
 
 .appointment-date {
