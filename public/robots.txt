@@ -1,3 +1,9 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# (opciono) Blokiraj potencijalne privatne stranice
+Disallow: /admin
+Disallow: /404
+
+# Lokacija XML mape sajta
+Sitemap: https://www.pronadjiprofesora.com/sitemap.xml
