@@ -108,21 +108,46 @@ const [nacinCasa, setNacinCasa] = useState('');
         alert('Profesor nema unet email.');
         return;
       }
+let googleMeetLink = '';
 
-      await fetch('https://email-api-jelenas-projects-7386403f.vercel.app/api/sendEmail', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ime,
-          prezime,
-          email,
-          datum: selectedSlot.dan,
-          vreme: selectedSlot.vreme,
-          telefonUcenika,
-          profesorEmail: professor.email,
-          nacinCasa: nacinCasa || (professor.nacinCasova?.online ? 'online' : 'uzivo'),
-        }),
-      });
+if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
+  try {
+    const response = await fetch('http://localhost:3001/create-event', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        summary: `Privatni čas - ${ime} ${prezime}`,
+        description: `Online čas zakazan preko aplikacije.`,
+        startTime: `${selectedSlot.dan}T${selectedSlot.vreme}:00`,
+        endTime: `${selectedSlot.dan}T${selectedSlot.vreme.slice(0, 2)}:${String(+selectedSlot.vreme.slice(3, 5) + 45).padStart(2, '0')}:00`,
+        studentEmail: email,
+        professorEmail: professor.email,
+      }),
+    });
+
+    const data = await response.json();
+    googleMeetLink = data?.hangoutLink || '';
+  } catch (error) {
+    console.error('Greška pri kreiranju Google Meet linka:', error);
+  }
+}
+
+  await fetch('https://email-api-jelenas-projects-7386403f.vercel.app/api/sendEmail', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    ime,
+    prezime,
+    email,
+    datum: selectedSlot.dan,
+    vreme: selectedSlot.vreme,
+    telefonUcenika,
+    profesorEmail: professor.email,
+    nacinCasa: nacinCasa || (professor.nacinCasova?.online ? 'online' : 'uzivo'),
+    googleMeetLink,
+  }),
+});
+
 
       alert('Rezervacija uspešna! Email poslat.');
       navigate('/');
