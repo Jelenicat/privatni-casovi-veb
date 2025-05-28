@@ -26,6 +26,7 @@ export default function ProfessorProfileScreenWeb() {
   const [komentar, setKomentar] = useState('');
   const [mozeOceniti, setMozeOceniti] = useState(false);
   const [oceneKomentari, setOceneKomentari] = useState([]);
+const [nacinCasa, setNacinCasa] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,8 +69,8 @@ export default function ProfessorProfileScreenWeb() {
   }, [id]);
 
   const zakaziCas = async () => {
-    if (!selectedSlot || !ime || !prezime || !email || !telefonUcenika) {
-      alert('Molimo popunite sva polja i izaberite termin.');
+    if (!selectedSlot || !ime || !prezime || !email || !telefonUcenika ||  (professor.nacinCasova?.online && professor.nacinCasova?.uzivo && !nacinCasa))  {
+      alert('Molimo popunite sva polja i izaberite termin i način izvođenja časa.');
       return;
     }
 
@@ -89,6 +90,7 @@ export default function ProfessorProfileScreenWeb() {
         prezime,
         email,
         telefonUcenika,
+         nacinCasa: nacinCasa || (professor.nacinCasova?.online ? 'online' : 'uzivo'),
       });
 
       const terminRef = doc(db, 'profesori', id, 'slobodniTermini', selectedSlot.dan);
@@ -118,6 +120,7 @@ export default function ProfessorProfileScreenWeb() {
           vreme: selectedSlot.vreme,
           telefonUcenika,
           profesorEmail: professor.email,
+          nacinCasa: nacinCasa || (professor.nacinCasova?.online ? 'online' : 'uzivo'),
         }),
       });
 
@@ -228,6 +231,16 @@ export default function ProfessorProfileScreenWeb() {
           <input type="text" placeholder="Prezime" value={prezime} onChange={e => setPrezime(e.target.value)} />
           <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
           <input type="tel" placeholder="Telefon" value={telefonUcenika} onChange={e => setTelefonUcenika(e.target.value)} />
+{professor.nacinCasova?.online && professor.nacinCasova?.uzivo && (
+  <div className="select-nacin">
+    <label>Način izvođenja časa:</label>
+    <select value={nacinCasa} onChange={(e) => setNacinCasa(e.target.value)}>
+      <option value="">-- Izaberite --</option>
+      <option value="uzivo">Uživo</option>
+      <option value="online">Online</option>
+    </select>
+  </div>
+)}
 
           <div className="button-wrapper">
             <button className="zakazi-button" onClick={zakaziCas}>Zakaži čas</button>
