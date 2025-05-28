@@ -57,29 +57,25 @@
   transform: scale(0.98);
 }
 .back-button {
-  display: block;
-  width: 100%;
-  margin: 20px auto 0 auto;
-  padding: 15px;
-  font-size: 16px;
-  background: linear-gradient(to right, #ff80ab, #f06292);
-  border: none;
+  margin-top: 30px;
+  padding: 14px;
+  border: 2px solid #ff80ab;
   border-radius: 12px;
-  color: white;
+  background: transparent;
+  color: #ff80ab;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s, opacity 0.2s;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  align-self: center;
 }
-
-
 
 .back-button:hover {
-  opacity: 0.9;
-}
-
-.back-button:active {
-  transform: scale(0.98);
-  opacity: 0.8;
+  background-color: #ff80ab;
+  color: white;
+  box-shadow: 0 0 10px #ff80ab;
 }
 
 
