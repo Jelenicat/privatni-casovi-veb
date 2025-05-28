@@ -22,11 +22,11 @@
   background-color: #121212;
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 0 20px rgba(255, 128, 171, 0.4);
   color: white;
   text-align: center;
   font-family: 'Poppins', sans-serif;
 }
+
 
 .mode-container h1 {
   margin-bottom: 30px;
@@ -57,7 +57,7 @@
   transform: scale(0.98);
 }
 .back-button {
-  margin-top: 20px;
+  margin: 20px auto 0 auto;
   background: transparent;
   border: 2px solid #ff80ab;
   color: #ff80ab;
@@ -67,13 +67,14 @@
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-   width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
+  display: block;
+  width: fit-content;
 }
+
 
 .back-button:hover {
   background-color: #ff80ab;
   color: white;
   box-shadow: 0 0 10px #ff80ab;
 }
+

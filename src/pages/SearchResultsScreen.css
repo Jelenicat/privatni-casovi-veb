@@ -92,3 +92,34 @@
     width: auto;
   }
 }
+.card {
+  position: relative; /* obavezno za pozicioniranje badge-a */
+}
+
+.badges {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.badge {
+  background-color: #ff80ab;
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  box-shadow: 0 0 5px rgba(255, 128, 171, 0.5);
+}
+
+.badge-online {
+  background-color: #4caf50; /* zelena za online */
+}
+
+.badge-uzivo {
+  background-color: #ff9800; /* narandžasta za uživo */
+}

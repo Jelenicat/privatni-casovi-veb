@@ -11,6 +11,8 @@ export default function LocationScreen({ navigate }) {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const level = queryParams.get('level');
+  const mode = queryParams.get('mode') || 'oba';
+
 
   const handleNext = () => {
     const lokacija = selectedGrad === 'Beograd'
@@ -19,7 +21,8 @@ export default function LocationScreen({ navigate }) {
         : selectedGrad // sve opštine
       : selectedGrad;
 
-    navigate(`/subjects?level=${level}&location=${encodeURIComponent(lokacija)}`);
+    navigate(`/subjects?level=${level}&location=${encodeURIComponent(lokacija)}&mode=${mode}`);
+
   };
 
   const handleBack = () => {

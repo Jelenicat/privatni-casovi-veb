@@ -174,6 +174,11 @@ export default function ProfessorProfileScreenWeb() {
             }).join(', ')
           }</p>
           <p className="info">💰 {professor.cena ? `${professor.cena} RSD` : 'Nije navedena'}</p>
+<div className="info">
+  {professor.nacinCasova?.uzivo && <span className="badge-uzivo">🏠 Uživo</span>}
+  {professor.nacinCasova?.online && <span className="badge-online">💻 Online</span>}
+</div>
+
 
           {professor.opis && (
             <>

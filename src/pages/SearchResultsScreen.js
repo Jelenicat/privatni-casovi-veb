@@ -17,6 +17,8 @@ export default function SearchResultsScreen() {
   const level = queryParams.get('level');
   const locationParam = queryParams.get('location');
   const subjects = JSON.parse(queryParams.get('subjects') || '{}');
+  const mode = queryParams.get('mode') || 'oba';
+
 
   const LEVEL_MAP = {
     osnovna: 'Osnovna škola',
@@ -40,6 +42,11 @@ export default function SearchResultsScreen() {
 
         const nivoMatch = data.nivoi?.[levelFromParam] === true;
         const predmetMatch = Object.keys(s).some((k) => s[k] && data.predmeti?.[k]);
+        const modeMatch =
+  mode === 'oba' ||
+  (mode === 'online' && data.nacinCasova?.online) ||
+  (mode === 'uzivo' && data.nacinCasova?.uzivo);
+
 
         const passedLocationCheck = (() => {
           if (grad && opstina) {
@@ -50,7 +57,7 @@ export default function SearchResultsScreen() {
           return false;
         })();
 
-        if (nivoMatch && passedLocationCheck && predmetMatch) {
+        if (nivoMatch && passedLocationCheck && predmetMatch && modeMatch) {
           lista.push({ id, ...data });
         }
       });
@@ -70,6 +77,11 @@ export default function SearchResultsScreen() {
       ) : (
         profesori.map((prof) => (
           <div key={prof.id} className="card" onClick={() => navigate(`/professor/${prof.id}`)}>
+            <div className="badges">
+  {prof.nacinCasova?.online && <div className="badge badge-online">ONLINE</div>}
+  {prof.nacinCasova?.uzivo && <div className="badge badge-uzivo">UŽIVO</div>}
+</div>
+
             <h2 className="prof-name">{prof.ime || 'Nepoznat profesor'}</h2>
             {prof.opis && (
               <p className="prof-opis">
@@ -93,6 +105,12 @@ export default function SearchResultsScreen() {
             <p className="prof-info">
               🎓 {Object.keys(prof.nivoi || {}).filter((n) => prof.nivoi[n]).join(', ')}
             </p>
+<p className="prof-info">
+  {prof.nacinCasova?.uzivo ? '🏠 Uživo ' : ''}
+  {prof.nacinCasova?.online ? '💻 Online' : ''}
+</p>
+
+
             <p className="prof-price">
               💰 {prof.cena ? `${prof.cena} RSD po času` : 'Cena nije navedena'}
             </p>

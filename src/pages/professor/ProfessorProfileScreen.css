@@ -228,3 +228,21 @@ textarea {
   outline: none;
   box-shadow: none;
 }
+.badge-uzivo, .badge-online {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-right: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  background-color: #1f1f1f;
+  border: 1px solid #ff80ab;
+  color: #ff80ab;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.badge-uzivo:hover, .badge-online:hover {
+  background-color: #ff80ab;
+  color: #1f1f1f;
+}
+

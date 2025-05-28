@@ -18,6 +18,8 @@ export default function SubjectsScreen() {
   const queryParams = new URLSearchParams(location.search);
   const level = queryParams.get('level');
   const loc = queryParams.get('location');
+  const mode = queryParams.get('mode') || 'oba';
+
 
   const [selectedSubjects, setSelectedSubjects] = useState({});
   const [expandedGroups, setExpandedGroups] = useState({});
@@ -34,6 +36,7 @@ export default function SubjectsScreen() {
     const query = new URLSearchParams({
       level,
       location: loc,
+      mode,
       subjects: JSON.stringify(selectedSubjects),
     }).toString();
 
