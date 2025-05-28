@@ -31,6 +31,11 @@ export default function EditProfile() {
   const [predmeti, setPredmeti] = useState({});
   const [expanded, setExpanded] = useState({});
   const [isModified, setIsModified] = useState(false);
+  const [nacinCasova, setNacinCasova] = useState({
+  uzivo: false,
+  online: false,
+});
+
 
   const gradDropdownRef = useRef();
   const opstinaDropdownRef = useRef();
@@ -53,6 +58,7 @@ export default function EditProfile() {
           setEmail(data.email || user.email);
           setNivoi(data.nivoi || {});
           setPredmeti(data.predmeti || {});
+          setNacinCasova(data.nacinCasova || { uzivo: false, online: false });
         }
       }
     };
@@ -98,6 +104,7 @@ export default function EditProfile() {
       email,
       nivoi,
       predmeti,
+      nacinCasova,
     });
     alert('Profil uspešno sačuvan!');
     setIsModified(false);
@@ -216,6 +223,32 @@ export default function EditProfile() {
           </div>
         ))}
       </div>
+      <label>Način izvođenja časova:</label>
+<div className="subject-list">
+  <div className="subject-item">
+    <input
+      type="checkbox"
+      checked={nacinCasova.uzivo}
+      onChange={() => {
+        setNacinCasova(prev => ({ ...prev, uzivo: !prev.uzivo }));
+        setIsModified(true);
+      }}
+    />
+    <span>Držim časove uživo</span>
+  </div>
+  <div className="subject-item">
+    <input
+      type="checkbox"
+      checked={nacinCasova.online}
+      onChange={() => {
+        setNacinCasova(prev => ({ ...prev, online: !prev.online }));
+        setIsModified(true);
+      }}
+    />
+    <span>Držim časove online</span>
+  </div>
+</div>
+
 
       <button className="save-button" onClick={handleSave}>Sačuvaj</button>
       <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
