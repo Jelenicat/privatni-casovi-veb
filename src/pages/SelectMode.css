@@ -1,0 +1,79 @@
+.mode-background {
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mode-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mode-container {
+  max-width: 500px;
+  margin: 80px auto;
+  background-color: #121212;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 128, 171, 0.4);
+  color: white;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.mode-container h1 {
+  margin-bottom: 30px;
+  color: #ff80ab;
+  font-size: 26px;
+}
+
+.mode-container button {
+  display: block;
+  width: 100%;
+  margin: 15px 0;
+  padding: 15px;
+  font-size: 16px;
+  background: linear-gradient(to right, #ff80ab, #f06292);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.mode-container button:hover {
+  opacity: 0.9;
+}
+
+.mode-container button:active {
+  transform: scale(0.98);
+}
+.back-button {
+  margin-top: 20px;
+  background: transparent;
+  border: 2px solid #ff80ab;
+  color: #ff80ab;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+   width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.back-button:hover {
+  background-color: #ff80ab;
+  color: white;
+  box-shadow: 0 0 10px #ff80ab;
+}

@@ -12,7 +12,7 @@ export default function HomePage({ navigate }) {
         </div>
 
         <div className="buttonsWrapper">
-          <button className="gradientButton pink" onClick={() => navigate('/education')}>
+          <button className="gradientButton pink" onClick={() => navigate('/mode')}>
             Pretraži profesore (učenik)
           </button>
           <button className="gradientButton red" onClick={() => navigate('/auth-choice')}>

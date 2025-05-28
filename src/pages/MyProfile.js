@@ -66,6 +66,16 @@ export default function MyProfile() {
           {Object.entries(profile.nivoi || {}).filter(([, v]) => v).map(([k]) => <li key={k}>{k}</li>)}
         </ul>
       </div>
+      {profile.nacinCasova && (
+  <div className="info-section">
+    <h3 className="highlight">Način izvođenja časova:</h3>
+    <ul>
+  {profile.nacinCasova.uzivo && <li>🏠 Uživo</li>}
+  {profile.nacinCasova.online && <li>💻 Online</li>}
+    </ul>
+  </div>
+)}
+
 
       <div className="button-group">
         <button onClick={() => navigate('/edit-profile')}>✏ Izmeni profil</button>

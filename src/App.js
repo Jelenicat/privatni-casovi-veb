@@ -13,6 +13,8 @@ import EditProfile from './pages/EditProfile';
 import AddAvailability from './pages/AddAvailability';
 import CalendarView from './pages/CalendarView';
 import Register from './pages/Register'; 
+import SelectMode from './pages/SelectMode';
+
 
 
 
@@ -34,6 +36,7 @@ function App() {
       <Route path="/add-availability" element={<AddAvailability />} />
       <Route path="/calendar-view" element={<CalendarView />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/mode" element={<SelectMode />} />
 
     </Routes>
   );
