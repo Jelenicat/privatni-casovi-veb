@@ -1,6 +1,6 @@
 import React from 'react';
 import './HomePage.css';
-import bg from '../assets/bg.jpg';
+import bg from '../assets/bg.jpg'; // obavezno ubaci sliku u public ili src/assets
 
 export default function HomePage({ navigate }) {
   return (
@@ -19,25 +19,6 @@ export default function HomePage({ navigate }) {
             Prijava profesora
           </button>
         </div>
-
-    
-    {/* ✅ SEO tekst sekcija */}
-<section className="seo-section">
-  <h2>Privatni časovi za sve nivoe obrazovanja</h2>
-  <p>
-    Na platformi <strong>Privatni časovi</strong> možete pronaći iskusne profesore za 
-    <strong> matematiku, engleski jezik, fiziku, hemiju, informatiku, srpski jezik</strong> i druge predmete.
-    Časovi su dostupni za <strong>osnovnu školu, srednju školu</strong> i <strong>fakultet</strong>.
-  </p>
-  <p>
-    Učenici mogu brzo i jednostavno pronaći profesora, pregledati njegove slobodne termine i zakazati čas – bez registracije.
-    Profesori mogu napraviti nalog, uneti predmete koje predaju i postaviti svoje termine.
-  </p>
-  <p>
-    Ova platforma je namenjena i <strong>učenicima</strong> koji traže pomoć, i <strong>profesorima</strong> koji žele da ponude svoje usluge.
-  </p>
-</section>
-
       </div>
     </div>
   );
