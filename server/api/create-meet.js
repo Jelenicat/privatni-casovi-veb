@@ -1,3 +1,4 @@
+import 'dotenv/config'; // <--- OVO DODAJ NA VRH
 import { google } from 'googleapis';
 
 export default async function handler(req, res) {
@@ -8,7 +9,6 @@ export default async function handler(req, res) {
   try {
     const { ime, prezime, email, datum, vreme } = req.body;
 
-    // ✅ Provera ulaznih podataka
     if (!ime || !prezime || !email || !datum || !vreme) {
       console.log('❌ Nedostaju podaci:', req.body);
       return res.status(400).json({ error: 'Nedostaju podaci za kreiranje događaja.' });
@@ -46,14 +46,11 @@ export default async function handler(req, res) {
       attendees: [{ email }],
     };
 
-    // ✅ Pravi događaj sa Google Meet linkom
     const response = await calendar.events.insert({
       calendarId: 'primary',
       resource: event,
       conferenceDataVersion: 1,
     });
-
-    console.log('✅ Google Calendar API response:', JSON.stringify(response.data, null, 2));
 
     const meetLink = response.data.hangoutLink;
 
