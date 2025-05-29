@@ -25,7 +25,7 @@ export default function ProfessorProfileScreenWeb() {
   const [komentar, setKomentar] = useState('');
   const [mozeOceniti, setMozeOceniti] = useState(false);
   const [oceneKomentari, setOceneKomentari] = useState([]);
-const [nacinCasa, setNacinCasa] = useState('');
+  const [nacinCasa, setNacinCasa] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,7 +68,7 @@ const [nacinCasa, setNacinCasa] = useState('');
   }, [id]);
 
   const zakaziCas = async () => {
-    if (!selectedSlot || !ime || !prezime || !email || !telefonUcenika ||  (professor.nacinCasova?.online && professor.nacinCasova?.uzivo && !nacinCasa))  {
+    if (!selectedSlot || !ime || !prezime || !email || !telefonUcenika || (professor.nacinCasova?.online && professor.nacinCasova?.uzivo && !nacinCasa)) {
       alert('Molimo popunite sva polja i izaberite termin i način izvođenja časa.');
       return;
     }
@@ -89,7 +89,7 @@ const [nacinCasa, setNacinCasa] = useState('');
         prezime,
         email,
         telefonUcenika,
-         nacinCasa: nacinCasa || (professor.nacinCasova?.online ? 'online' : 'uzivo'),
+        nacinCasa: nacinCasa || (professor.nacinCasova?.online ? 'online' : 'uzivo'),
       });
 
       const terminRef = doc(db, 'profesori', id, 'slobodniTermini', selectedSlot.dan);
@@ -107,46 +107,46 @@ const [nacinCasa, setNacinCasa] = useState('');
         alert('Profesor nema unet email.');
         return;
       }
-let googleMeetLink = '';
 
-if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
-  try {
-    const response = await fetch('https://calendar-server-ktilvhxsj-jelenas-projects-7386403f.vercel.app/create-meet', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        summary: `Privatni čas - ${ime} ${prezime}`,
-        description: `Online čas zakazan preko aplikacije.`,
-        startTime: `${selectedSlot.dan}T${selectedSlot.vreme}:00`,
-        endTime: `${selectedSlot.dan}T${selectedSlot.vreme.slice(0, 2)}:${String(+selectedSlot.vreme.slice(3, 5) + 45).padStart(2, '0')}:00`,
-        studentEmail: email,
-        professorEmail: professor.email,
-      }),
-    });
+      let googleMeetLink = '';
 
-    const data = await response.json();
-    googleMeetLink = data?.hangoutLink || '';
-  } catch (error) {
-    console.error('Greška pri kreiranju Google Meet linka:', error);
-  }
-}
+      if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
+        try {
+          const response = await fetch('https://calendar-server-ktilvhxsj-jelenas-projects-7386403f.vercel.app/create-meet', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              ime,
+              prezime,
+              email,
+              datum: selectedSlot.dan,
+              vreme: selectedSlot.vreme,
+            }),
+          });
 
-  await fetch('https://email-api-jelenas-projects-7386403f.vercel.app/api/sendEmail', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    ime,
-    prezime,
-    email,
-    datum: selectedSlot.dan,
-    vreme: selectedSlot.vreme,
-    telefonUcenika,
-    profesorEmail: professor.email,
-    nacinCasa: nacinCasa || (professor.nacinCasova?.online ? 'online' : 'uzivo'),
-    googleMeetLink,
-  }),
-});
+          const data = await response.json();
+          googleMeetLink = data?.hangoutLink || '';
+          console.log('Google Meet link:', googleMeetLink);
+        } catch (error) {
+          console.error('Greška pri kreiranju Google Meet linka:', error);
+        }
+      }
 
+      await fetch('https://email-api-jelenas-projects-7386403f.vercel.app/api/sendEmail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ime,
+          prezime,
+          email,
+          datum: selectedSlot.dan,
+          vreme: selectedSlot.vreme,
+          telefonUcenika,
+          profesorEmail: professor.email,
+          nacinCasa: nacinCasa || (professor.nacinCasova?.online ? 'online' : 'uzivo'),
+          googleMeetLink,
+        }),
+      });
 
       alert('Rezervacija uspešna! Email poslat.');
       navigate('/');
@@ -201,11 +201,10 @@ if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
             }).join(', ')
           }</p>
           <p className="info">💰 {professor.cena ? `${professor.cena} RSD` : 'Nije navedena'}</p>
-<div className="info">
-  {professor.nacinCasova?.uzivo && <span className="badge-uzivo">🏠 Uživo</span>}
-  {professor.nacinCasova?.online && <span className="badge-online">💻 Online</span>}
-</div>
-
+          <div className="info">
+            {professor.nacinCasova?.uzivo && <span className="badge-uzivo">🏠 Uživo</span>}
+            {professor.nacinCasova?.online && <span className="badge-online">💻 Online</span>}
+          </div>
 
           {professor.opis && (
             <>
@@ -255,16 +254,16 @@ if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
           <input type="text" placeholder="Prezime" value={prezime} onChange={e => setPrezime(e.target.value)} />
           <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
           <input type="tel" placeholder="Telefon" value={telefonUcenika} onChange={e => setTelefonUcenika(e.target.value)} />
-{professor.nacinCasova?.online && professor.nacinCasova?.uzivo && (
-  <div className="select-nacin">
-    <label>Način izvođenja časa:</label>
-    <select value={nacinCasa} onChange={(e) => setNacinCasa(e.target.value)}>
-      <option value="">-- Izaberite --</option>
-      <option value="uzivo">Uživo</option>
-      <option value="online">Online</option>
-    </select>
-  </div>
-)}
+          {professor.nacinCasova?.online && professor.nacinCasova?.uzivo && (
+            <div className="select-nacin">
+              <label>Način izvođenja časa:</label>
+              <select value={nacinCasa} onChange={(e) => setNacinCasa(e.target.value)}>
+                <option value="">-- Izaberite --</option>
+                <option value="uzivo">Uživo</option>
+                <option value="online">Online</option>
+              </select>
+            </div>
+          )}
 
           <div className="button-wrapper">
             <button className="zakazi-button" onClick={zakaziCas}>Zakaži čas</button>
