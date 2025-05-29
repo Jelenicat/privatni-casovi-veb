@@ -1,69 +1,80 @@
-import 'dotenv/config'; // <--- OVO DODAJ NA VRH
 import { google } from 'googleapis';
 
 export default async function handler(req, res) {
+  // ✅ CORS zaglavlja
+  res.setHeader('Access-Control-Allow-Origin', 'https://www.pronadjiprofesora.com');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // ✅ Rešavanje OPTIONS preflight zahteva
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  // ✅ Dozvoljena samo POST metoda
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Samo POST metoda je dozvoljena.' });
   }
 
   try {
-    const { ime, prezime, email, datum, vreme } = req.body;
+    console.log('📩 Primljen zahtev:', req.body);
 
-    if (!ime || !prezime || !email || !datum || !vreme) {
-      console.log('❌ Nedostaju podaci:', req.body);
-      return res.status(400).json({ error: 'Nedostaju podaci za kreiranje događaja.' });
-    }
+    // 🔐 Parsiranje service account podataka iz environment promenljive
+    const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+    console.log('🔑 Service account parsed');
 
-    const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
-
-    const auth = new google.auth.GoogleAuth({
-      credentials,
+    // 🛂 Kreiranje JWT klijenta
+    const jwtClient = new google.auth.JWT({
+      email: serviceAccount.client_email,
+      key: serviceAccount.private_key,
       scopes: ['https://www.googleapis.com/auth/calendar'],
     });
 
-    const client = await auth.getClient();
-    const calendar = google.calendar({ version: 'v3', auth: client });
+    await jwtClient.authorize();
+    console.log('✅ Autorizovan Google klijent');
 
-    const startDateTime = new Date(`${datum}T${vreme}`);
-    const endDateTime = new Date(startDateTime.getTime() + 60 * 60 * 1000); // +1h
+    const calendar = google.calendar({ version: 'v3', auth: jwtClient });
+
+    // 📅 Priprema događaja
+    const { ime, prezime, email, datum, vreme } = req.body;
+    const start = new Date(`${datum}T${vreme}:00`);
+    const end = new Date(start.getTime() + 60 * 60 * 1000); // 1 sat
 
     const event = {
       summary: `Čas sa ${ime} ${prezime}`,
-      description: 'Online čas zakazan preko aplikacije.',
+      description: 'Privatni čas zakazan putem aplikacije.',
       start: {
-        dateTime: startDateTime.toISOString(),
+        dateTime: start.toISOString(),
         timeZone: 'Europe/Belgrade',
       },
       end: {
-        dateTime: endDateTime.toISOString(),
+        dateTime: end.toISOString(),
         timeZone: 'Europe/Belgrade',
       },
+      attendees: [{ email }],
       conferenceData: {
         createRequest: {
           requestId: `${Date.now()}`,
         },
       },
-      attendees: [{ email }],
     };
 
-    const response = await calendar.events.insert({
+    // 📤 Slanje događaja Google Calendar-u
+    const result = await calendar.events.insert({
       calendarId: 'primary',
       resource: event,
       conferenceDataVersion: 1,
     });
 
-    const meetLink = response.data.hangoutLink;
+    console.log('📅 Google Meet link:', result.data?.hangoutLink);
 
-    if (!meetLink) {
-      console.warn('⚠️ Google Meet link NIJE generisan!');
-    } else {
-      console.log('🔗 Google Meet link:', meetLink);
-    }
-
-    return res.status(200).json({ hangoutLink: meetLink || '' });
-
+    // ✅ Odgovor
+    res.status(200).json({ hangoutLink: result.data?.hangoutLink });
   } catch (error) {
-    console.error('❌ Greška pri kreiranju Google Meet linka:', error.message);
-    return res.status(500).json({ error: 'Greška pri kreiranju Google Meet linka.' });
+    console.error('❌ GRESKA u create-meet.js:', error);
+    res.status(500).json({
+      error: 'Neuspešno generisanje Meet linka',
+      detalji: error.message,
+    });
   }
 }
