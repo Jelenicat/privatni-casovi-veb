@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import './ProfessorProfileScreen.css';
 import Calendar from 'react-calendar';
@@ -112,7 +111,7 @@ let googleMeetLink = '';
 
 if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
   try {
-    const response = await fetch('http://localhost:3001/create-event', {
+    const response = await fetch('https://calendar-server-ktilvhxsj-jelenas-projects-7386403f.vercel.app/create-meet', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

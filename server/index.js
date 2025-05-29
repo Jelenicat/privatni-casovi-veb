@@ -13,9 +13,10 @@ const PORT = process.env.PORT || 3001;
 
 // Load service account key
 const auth = new google.auth.GoogleAuth({
-  keyFile: './server/service-account.json', // putanja je tačno kako vidi Node
+  credentials: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT),
   scopes: ['https://www.googleapis.com/auth/calendar'],
 });
+
 
 // Create Meet endpoint
 app.post('/create-meet', async (req, res) => {
