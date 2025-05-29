@@ -110,27 +110,36 @@ export default function ProfessorProfileScreenWeb() {
 
       let googleMeetLink = '';
 
-      if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
-        try {
-          const response = await fetch('https://calendar-server-ktilvhxsj-jelenas-projects-7386403f.vercel.app/create-meet', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              ime,
-              prezime,
-              email,
-              datum: selectedSlot.dan,
-              vreme: selectedSlot.vreme,
-            }),
-          });
+    if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
+  try {
+    const response = await fetch('https://calendar-server-ktilvhxsj-jelenas-projects-7386403f.vercel.app/create-meet', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ime,
+        prezime,
+        email,
+        datum: selectedSlot.dan,
+        vreme: selectedSlot.vreme,
+      }),
+    });
 
-          const data = await response.json();
-          googleMeetLink = data?.hangoutLink || '';
-          console.log('Google Meet link:', googleMeetLink);
-        } catch (error) {
-          console.error('Greška pri kreiranju Google Meet linka:', error);
-        }
-      }
+    const data = await response.json();
+    console.log('📅 Odgovor sa create-meet API-ja:', data);
+
+    if (data?.hangoutLink) {
+      googleMeetLink = data.hangoutLink;
+      console.log('✅ Google Meet link:', googleMeetLink);
+    } else {
+      console.warn('⚠️ Google Meet link nije generisan!');
+      alert('⚠ Došlo je do greške pri generisanju Google Meet linka. Čas je zakazan, ali link nedostaje.');
+    }
+  } catch (error) {
+    console.error('❌ Greška pri fetchovanju Google Meet linka:', error);
+    alert('❌ Neuspešno generisanje Google Meet linka.');
+  }
+}
+
 
       await fetch('https://email-api-jelenas-projects-7386403f.vercel.app/api/sendEmail', {
         method: 'POST',

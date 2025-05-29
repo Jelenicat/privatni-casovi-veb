@@ -8,6 +8,12 @@ export default async function handler(req, res) {
   try {
     const { ime, prezime, email, datum, vreme } = req.body;
 
+    // ✅ Provera ulaznih podataka
+    if (!ime || !prezime || !email || !datum || !vreme) {
+      console.log('❌ Nedostaju podaci:', req.body);
+      return res.status(400).json({ error: 'Nedostaju podaci za kreiranje događaja.' });
+    }
+
     const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
 
     const auth = new google.auth.GoogleAuth({
@@ -33,21 +39,34 @@ export default async function handler(req, res) {
         timeZone: 'Europe/Belgrade',
       },
       conferenceData: {
-        createRequest: { requestId: `${Date.now()}` },
+        createRequest: {
+          requestId: `${Date.now()}`,
+        },
       },
       attendees: [{ email }],
     };
 
+    // ✅ Pravi događaj sa Google Meet linkom
     const response = await calendar.events.insert({
       calendarId: 'primary',
       resource: event,
       conferenceDataVersion: 1,
     });
 
+    console.log('✅ Google Calendar API response:', JSON.stringify(response.data, null, 2));
+
     const meetLink = response.data.hangoutLink;
-    res.status(200).json({ hangoutLink: meetLink });
+
+    if (!meetLink) {
+      console.warn('⚠️ Google Meet link NIJE generisan!');
+    } else {
+      console.log('🔗 Google Meet link:', meetLink);
+    }
+
+    return res.status(200).json({ hangoutLink: meetLink || '' });
+
   } catch (error) {
-    console.error('Greška pri kreiranju Google Meet linka:', error);
-    res.status(500).json({ error: 'Greška pri kreiranju Google Meet linka.' });
+    console.error('❌ Greška pri kreiranju Google Meet linka:', error.message);
+    return res.status(500).json({ error: 'Greška pri kreiranju Google Meet linka.' });
   }
 }
