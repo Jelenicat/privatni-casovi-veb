@@ -1,0 +1,8 @@
+{
+  "builds": [
+    { "src": "server/api/create-meet.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/create-meet", "dest": "server/api/create-meet.js" }
+  ]
+}

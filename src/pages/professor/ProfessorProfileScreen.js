@@ -108,11 +108,11 @@ export default function ProfessorProfileScreenWeb() {
         return;
       }
 
-      let googleMeetLink = '';
+    let googleMeetLink = '';
 
-    if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
+if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
   try {
-    const response = await fetch('https://calendar-server-drogt03lk-jelenas-projects-7386403f.vercel.app/create-meet', {
+    const response = await fetch('https://calendar-server-p7awzmpnh-jelenas-projects-7386403f.vercel.app/api/create-meet', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -121,14 +121,15 @@ export default function ProfessorProfileScreenWeb() {
         email,
         datum: selectedSlot.dan,
         vreme: selectedSlot.vreme,
+        profesorEmail: professor.email
       }),
     });
 
     const data = await response.json();
     console.log('📅 Odgovor sa create-meet API-ja:', data);
 
-    if (data?.hangoutLink) {
-      googleMeetLink = data.hangoutLink;
+    if (data?.meetLink) {
+      googleMeetLink = data.meetLink;
       console.log('✅ Google Meet link:', googleMeetLink);
     } else {
       console.warn('⚠️ Google Meet link nije generisan!');
@@ -139,6 +140,8 @@ export default function ProfessorProfileScreenWeb() {
     alert('❌ Neuspešno generisanje Google Meet linka.');
   }
 }
+
+
 
 
       await fetch('https://email-api-jelenas-projects-7386403f.vercel.app/api/sendEmail', {
