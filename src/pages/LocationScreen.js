@@ -34,45 +34,54 @@ export default function LocationScreen({ navigate }) {
     ...SVI_GRADOVI_SRBIJE.filter(g => g !== 'Beograd').sort()
   ];
 
-  return (
-    <div className="location-background" style={{ backgroundImage: `url(${bg5})` }}>
-      <div className="location-overlay">
-        <h1 className="title">Izaberi grad</h1>
-        <select
-          value={selectedGrad}
-          onChange={(e) => {
-            setSelectedGrad(e.target.value);
-            setSelectedOpstina('');
-          }}
-        >
-          <option value="">-- Odaberi grad --</option>
-          {gradovi.map((grad) => (
-            <option key={grad} value={grad}>{grad}</option>
-          ))}
-        </select>
+return (
+  <div className="location-background" style={{ backgroundImage: `url(${bg5})` }}>
+    <div className="location-overlay">
+      <h1 className="title">
+        {mode === 'online' ? 'Online čas' : 'Izaberi grad za uživo čas'}
+      </h1>
 
-        {selectedGrad === 'Beograd' && (
-          <>
-            <h2 className="subtitle">Izaberi opštinu</h2>
-            <select value={selectedOpstina} onChange={(e) => setSelectedOpstina(e.target.value)}>
-              <option value="">-- Sve opštine --</option>
-              {OPSTINE_BEOGRADA.map((opstina) => (
-                <option key={opstina} value={opstina}>{opstina}</option>
-              ))}
-            </select>
-          </>
-        )}
+      {/* Prikaz izbora grada/opštine samo ako nije "online" */}
+      {mode !== 'online' && (
+        <>
+          <select
+            value={selectedGrad}
+            onChange={(e) => {
+              setSelectedGrad(e.target.value);
+              setSelectedOpstina('');
+            }}
+          >
+            <option value="">-- Odaberi grad --</option>
+            {gradovi.map((grad) => (
+              <option key={grad} value={grad}>{grad}</option>
+            ))}
+          </select>
 
-        <button
-          className="location-button"
-          disabled={!selectedGrad}
-          onClick={handleNext}
-        >
-          Nastavi
-        </button>
+          {selectedGrad === 'Beograd' && (
+            <>
+              <h2 className="subtitle">Izaberi opštinu</h2>
+              <select value={selectedOpstina} onChange={(e) => setSelectedOpstina(e.target.value)}>
+                <option value="">-- Sve opštine --</option>
+                {OPSTINE_BEOGRADA.map((opstina) => (
+                  <option key={opstina} value={opstina}>{opstina}</option>
+                ))}
+              </select>
+            </>
+          )}
+        </>
+      )}
 
-        <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
-      </div>
+      <button
+        className="location-button"
+        disabled={mode !== 'online' && !selectedGrad}
+        onClick={handleNext}
+      >
+        Nastavi
+      </button>
+
+      <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
     </div>
-  );
+  </div>
+);
+
 }

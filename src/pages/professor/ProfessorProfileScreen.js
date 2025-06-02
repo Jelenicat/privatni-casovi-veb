@@ -113,6 +113,7 @@ let jitsiLink = '';
 if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
   const imeProfesora = professor.email.split('@')[0];
   const vremeBezDvotacke = selectedSlot.vreme.replace(':', '');
+
   jitsiLink = `https://meet.pronadjiprofesora.com/${imeProfesora}-${selectedSlot.dan}-${vremeBezDvotacke}`.replace(/\s+/g, '');
 }
 
