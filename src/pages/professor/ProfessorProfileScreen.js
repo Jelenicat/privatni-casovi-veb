@@ -112,10 +112,10 @@ let jitsiLink = '';
 
 if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
   const imeProfesora = professor.email.split('@')[0];
-  const vremeBezDvotacke = selectedSlot.vreme.replace(':', ''); // npr. 17:45 → 1745
-jitsiLink = `https://meet.jit.si/${imeProfesora}-${selectedSlot.dan}-${vremeBezDvotacke}`.replace(/\s+/g, '');
-
+  const vremeBezDvotacke = selectedSlot.vreme.replace(':', '');
+  jitsiLink = `https://meet.pronadjiprofesora.com/${imeProfesora}-${selectedSlot.dan}-${vremeBezDvotacke}`.replace(/\s+/g, '');
 }
+
 
 
 
