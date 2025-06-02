@@ -58,21 +58,23 @@
 
 /* === STIL ZA NAZAD dugme === */
 .back-button {
-  margin-top: 15px;
-  padding: 12px;
-  border: 2px solid #ff80ab;
-  border-radius: 12px;
-  background: transparent;
-  color: #ff80ab;
+  display: block;
+  width: 100%;
+  margin: 15px 0;
+  padding: 15px;
   font-size: 16px;
   font-weight: bold;
-  width: 100%;
+  border: 2px solid #ff80ab;
+  background: transparent;
+  color: #ff80ab;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .back-button:hover {
   background-color: #ff80ab;
-  color: white;
+  color: #121212;
   box-shadow: 0 0 10px #ff80ab;
 }
+
