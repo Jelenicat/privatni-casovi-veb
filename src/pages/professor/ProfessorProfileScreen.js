@@ -212,9 +212,10 @@ if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
             minDate={new Date()}
             tileDisabled={({ date }) => date < new Date(new Date().setHours(0, 0, 0, 0))}
             tileClassName={({ date }) => {
-              const key = date.toISOString().split('T')[0];
-              return slots[key] ? 'highlighted-day' : null;
-            }}
+  const key = date.toLocaleDateString('sv-SE'); // yyyy-mm-dd
+  return slots[key] ? 'highlighted-day' : null;
+}}
+
           />
 
           {selectedDate && (
