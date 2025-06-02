@@ -58,7 +58,6 @@
 
 /* === STIL ZA NAZAD dugme === */
 .mode-container .back-button {
-
   display: block;
   width: 100%;
   margin: 15px 0;
@@ -71,12 +70,11 @@
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
-.mode-container .back-button 
-hover {
+.mode-container .back-button:hover {
   background-color: #ff80ab;
   color: #121212;
   box-shadow: 0 0 10px #ff80ab;
 }
-
