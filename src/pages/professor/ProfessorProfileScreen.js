@@ -112,7 +112,8 @@ export default function ProfessorProfileScreenWeb() {
 
 if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
   try {
-    const response = await fetch('https://calendar-server-p7awzmpnh-jelenas-projects-7386403f.vercel.app/api/create-meet', {
+  const response = await fetch('https://calendar-server-grvcqlaj3-jelenas-projects-7386403f.vercel.app/api/create-meet', {
+
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

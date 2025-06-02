@@ -5,6 +5,7 @@ export default async function handler(req, res) {
   const isPreflight = applyCors(req, res);
   if (isPreflight) return;
 
+  // ⚠️ Tek ovde proveravamo metodu
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Only POST method is allowed' });
   }
