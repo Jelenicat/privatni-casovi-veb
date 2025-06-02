@@ -82,17 +82,18 @@ export default function ProfessorProfileScreenWeb() {
     const finalMode = nacinCasa || (professor.nacinCasova?.online && !professor.nacinCasova?.uzivo ? 'online' : 'uzivo');
 
     try {
-      const rezId = `${id}_${selectedSlot.dan}_${selectedSlot.vreme}`;
-      await setDoc(doc(db, 'rezervacije', rezId), {
-        profesorId: id,
-        datum: selectedSlot.dan,
-        vreme: selectedSlot.vreme,
-        ime,
-        prezime,
-        email,
-        telefonUcenika,
-        nacinCasa: finalMode,
-      });
+   await setDoc(doc(db, 'rezervacije', rezId), {
+  profesorId: id,
+  datum: selectedSlot.dan,
+  vreme: selectedSlot.vreme,
+  ime,
+  prezime,
+  email,
+  telefonUcenika,
+  nacinCasa: finalMode,
+  jitsiLink: finalMode === 'online' ? jitsiLink : '',
+});
+
 
       const terminRef = doc(db, 'profesori', id, 'slobodniTermini', selectedSlot.dan);
       const snap = await getDoc(terminRef);
