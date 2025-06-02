@@ -202,7 +202,13 @@ if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
 
           <h2>📅 Dostupni termini</h2>
           <Calendar
-            onClickDay={(value) => setSelectedDate(value.toISOString().split('T')[0])}
+            onClickDay={(value) => {
+  const localDate = new Date(value.getTime() - value.getTimezoneOffset() * 60000)
+    .toISOString()
+    .split('T')[0];
+  setSelectedDate(localDate);
+}}
+
             minDate={new Date()}
             tileDisabled={({ date }) => date < new Date(new Date().setHours(0, 0, 0, 0))}
             tileClassName={({ date }) => {
