@@ -108,39 +108,13 @@ export default function ProfessorProfileScreenWeb() {
         return;
       }
 
-    let googleMeetLink = '';
+let jitsiLink = '';
 
 if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
-  try {
-  const response = await fetch('https://calendar-server-grvcqlaj3-jelenas-projects-7386403f.vercel.app/api/create-meet', {
-
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        ime,
-        prezime,
-        email,
-        datum: selectedSlot.dan,
-        vreme: selectedSlot.vreme,
-        profesorEmail: professor.email
-      }),
-    });
-
-    const data = await response.json();
-    console.log('📅 Odgovor sa create-meet API-ja:', data);
-
-    if (data?.meetLink) {
-      googleMeetLink = data.meetLink;
-      console.log('✅ Google Meet link:', googleMeetLink);
-    } else {
-      console.warn('⚠️ Google Meet link nije generisan!');
-      alert('⚠ Došlo je do greške pri generisanju Google Meet linka. Čas je zakazan, ali link nedostaje.');
-    }
-  } catch (error) {
-    console.error('❌ Greška pri fetchovanju Google Meet linka:', error);
-    alert('❌ Neuspešno generisanje Google Meet linka.');
-  }
+  const imeProfesora = professor.email.split('@')[0];
+  jitsiLink = `https://meet.jit.si/${imeProfesora}-${selectedSlot.dan}-${selectedSlot.vreme}`.replace(/\s+/g, '');
 }
+
 
 
 
@@ -157,7 +131,7 @@ if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
           telefonUcenika,
           profesorEmail: professor.email,
           nacinCasa: nacinCasa || (professor.nacinCasova?.online ? 'online' : 'uzivo'),
-          googleMeetLink,
+          jitsiLink,
         }),
       });
 
