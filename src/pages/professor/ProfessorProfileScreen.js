@@ -80,20 +80,27 @@ export default function ProfessorProfileScreenWeb() {
     }
 
     const finalMode = nacinCasa || (professor.nacinCasova?.online && !professor.nacinCasova?.uzivo ? 'online' : 'uzivo');
+    const rezId = `${id}_${selectedSlot.dan}_${selectedSlot.vreme}`;
+
+    let jitsiLink = '';
+    if (finalMode === 'online') {
+      const imeProfesora = professor.email.split('@')[0];
+      const vremeBezDvotacke = selectedSlot.vreme.replace(':', '');
+      jitsiLink = `https://meet.pronadjiprofesora.com/${imeProfesora}-${selectedSlot.dan}-${vremeBezDvotacke}`.replace(/\s+/g, '');
+    }
 
     try {
-   await setDoc(doc(db, 'rezervacije', rezId), {
-  profesorId: id,
-  datum: selectedSlot.dan,
-  vreme: selectedSlot.vreme,
-  ime,
-  prezime,
-  email,
-  telefonUcenika,
-  nacinCasa: finalMode,
-  jitsiLink: finalMode === 'online' ? jitsiLink : '',
-});
-
+      await setDoc(doc(db, 'rezervacije', rezId), {
+        profesorId: id,
+        datum: selectedSlot.dan,
+        vreme: selectedSlot.vreme,
+        ime,
+        prezime,
+        email,
+        telefonUcenika,
+        nacinCasa: finalMode,
+        jitsiLink: finalMode === 'online' ? jitsiLink : '',
+      });
 
       const terminRef = doc(db, 'profesori', id, 'slobodniTermini', selectedSlot.dan);
       const snap = await getDoc(terminRef);
@@ -109,13 +116,6 @@ export default function ProfessorProfileScreenWeb() {
       if (!professor?.email) {
         alert('Profesor nema unet email.');
         return;
-      }
-
-      let jitsiLink = '';
-      if (finalMode === 'online') {
-        const imeProfesora = professor.email.split('@')[0];
-        const vremeBezDvotacke = selectedSlot.vreme.replace(':', '');
-        jitsiLink = `https://meet.pronadjiprofesora.com/${imeProfesora}-${selectedSlot.dan}-${vremeBezDvotacke}`.replace(/\s+/g, '');
       }
 
       await fetch('https://email-api-jelenas-projects-7386403f.vercel.app/api/sendEmail', {
