@@ -39,11 +39,17 @@ export default function CalendarView() {
       const rezSnap = await getDocs(q);
 
       rezSnap.forEach(docSnap => {
-        const { datum, vreme, ime, prezime } = docSnap.data();
+        const { datum, vreme, ime, prezime, nacinCasa, jitsiLink } = docSnap.data();
         const ucenik = ime && prezime ? `${ime} ${prezime}` : 'Nepoznat učenik';
         oznake[datum] = oznake[datum] || { slobodan: false, zauzet: false };
         oznake[datum].zauzet = true;
-        poDanu[datum] = [...(poDanu[datum] || []), { vreme, tip: 'zauzet', ucenik }];
+        poDanu[datum] = [...(poDanu[datum] || []), {
+          vreme,
+          tip: 'zauzet',
+          ucenik,
+          nacinCasa,
+          jitsiLink
+        }];
       });
 
       setMarkedDates(oznake);
@@ -78,6 +84,16 @@ export default function CalendarView() {
               </div>
               {t.ucenik && (
                 <div className="appointment-who">👤 {t.ucenik}</div>
+              )}
+              {t.nacinCasa === 'online' && t.jitsiLink && (
+                <a
+                  href={t.jitsiLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="join-meeting-button"
+                >
+                  📹 Pristupi online času
+                </a>
               )}
             </div>
           ))}
