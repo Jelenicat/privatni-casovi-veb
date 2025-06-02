@@ -81,19 +81,22 @@ export default function CalendarView() {
               <div className="appointment-time">{t.vreme}</div>
               <div className="appointment-status">
                 {t.tip === 'zauzet' ? 'Zauzet' : 'Slobodan'}
+
+                {t.nacinCasa === 'online' && t.jitsiLink && (
+                  <div>
+                    <a
+                      href={t.jitsiLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="join-meeting-button"
+                    >
+                      📹 Pristupi online času
+                    </a>
+                  </div>
+                )}
               </div>
               {t.ucenik && (
                 <div className="appointment-who">👤 {t.ucenik}</div>
-              )}
-              {t.nacinCasa === 'online' && t.jitsiLink && (
-                <a
-                  href={t.jitsiLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="join-meeting-button"
-                >
-                  📹 Pristupi online času
-                </a>
               )}
             </div>
           ))}
