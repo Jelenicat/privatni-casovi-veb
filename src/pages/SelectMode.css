@@ -27,7 +27,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-
 .mode-container h1 {
   margin-bottom: 30px;
   color: #ff80ab;
@@ -56,26 +55,23 @@
 .mode-container button:active {
   transform: scale(0.98);
 }
+
+/* === STIL ZA NAZAD dugme === */
 .back-button {
-  margin-top: 30px;
-  padding: 14px;
-  border: 2px solid #ff80ab;
-  border-radius: 12px;
-  background: transparent;
-  color: #ff80ab;
+  margin-top: 20px;
+  padding: 10px 20px;
   font-size: 16px;
-  font-weight: bold;
+  border: 2px solid #ff80ab;
+  background-color: transparent;
+  color: #ff80ab;
+  border-radius: 12px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
-  max-width: 300px;
-  align-self: center;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
 .back-button:hover {
   background-color: #ff80ab;
-  color: white;
+  color: #121212;
   box-shadow: 0 0 10px #ff80ab;
 }
-
-
