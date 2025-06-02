@@ -79,6 +79,8 @@ export default function ProfessorProfileScreenWeb() {
       return;
     }
 
+    const finalMode = nacinCasa || (professor.nacinCasova?.online && !professor.nacinCasova?.uzivo ? 'online' : 'uzivo');
+
     try {
       const rezId = `${id}_${selectedSlot.dan}_${selectedSlot.vreme}`;
       await setDoc(doc(db, 'rezervacije', rezId), {
@@ -89,7 +91,7 @@ export default function ProfessorProfileScreenWeb() {
         prezime,
         email,
         telefonUcenika,
-        nacinCasa: nacinCasa || (professor.nacinCasova?.online ? 'online' : 'uzivo'),
+        nacinCasa: finalMode,
       });
 
       const terminRef = doc(db, 'profesori', id, 'slobodniTermini', selectedSlot.dan);
@@ -108,19 +110,12 @@ export default function ProfessorProfileScreenWeb() {
         return;
       }
 
-let jitsiLink = '';
-
-if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
-  const imeProfesora = professor.email.split('@')[0];
-  const vremeBezDvotacke = selectedSlot.vreme.replace(':', '');
-
-  jitsiLink = `https://meet.pronadjiprofesora.com/${imeProfesora}-${selectedSlot.dan}-${vremeBezDvotacke}`.replace(/\s+/g, '');
-}
-
-
-
-
-
+      let jitsiLink = '';
+      if (finalMode === 'online') {
+        const imeProfesora = professor.email.split('@')[0];
+        const vremeBezDvotacke = selectedSlot.vreme.replace(':', '');
+        jitsiLink = `https://meet.pronadjiprofesora.com/${imeProfesora}-${selectedSlot.dan}-${vremeBezDvotacke}`.replace(/\s+/g, '');
+      }
 
       await fetch('https://email-api-jelenas-projects-7386403f.vercel.app/api/sendEmail', {
         method: 'POST',
@@ -133,7 +128,7 @@ if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
           vreme: selectedSlot.vreme,
           telefonUcenika,
           profesorEmail: professor.email,
-          nacinCasa: nacinCasa || (professor.nacinCasova?.online ? 'online' : 'uzivo'),
+          nacinCasa: finalMode,
           jitsiLink,
         }),
       });
@@ -206,19 +201,15 @@ if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
           <h2>📅 Dostupni termini</h2>
           <Calendar
             onClickDay={(value) => {
-  const localDate = new Date(value.getTime() - value.getTimezoneOffset() * 60000)
-    .toISOString()
-    .split('T')[0];
-  setSelectedDate(localDate);
-}}
-
+              const localDate = new Date(value.getTime() - value.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+              setSelectedDate(localDate);
+            }}
             minDate={new Date()}
             tileDisabled={({ date }) => date < new Date(new Date().setHours(0, 0, 0, 0))}
             tileClassName={({ date }) => {
-  const key = date.toLocaleDateString('sv-SE'); // yyyy-mm-dd
-  return slots[key] ? 'highlighted-day' : null;
-}}
-
+              const key = date.toLocaleDateString('sv-SE');
+              return slots[key] ? 'highlighted-day' : null;
+            }}
           />
 
           {selectedDate && (
@@ -251,6 +242,7 @@ if ((nacinCasa || professor.nacinCasova?.online) === 'online') {
           <input type="text" placeholder="Prezime" value={prezime} onChange={e => setPrezime(e.target.value)} />
           <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
           <input type="tel" placeholder="Telefon" value={telefonUcenika} onChange={e => setTelefonUcenika(e.target.value)} />
+
           {professor.nacinCasova?.online && professor.nacinCasova?.uzivo && (
             <div className="select-nacin">
               <label>Način izvođenja časa:</label>
