@@ -33,20 +33,26 @@
   font-size: 26px;
 }
 
-.mode-container button {
+.mode-container .back-button {
   display: block;
-  width: 100%;
+  width: 100%; /* OVO je već isto kao ostala dugmad */
   margin: 15px 0;
-  padding: 15px;
+  padding: 15px; /* isto kao i druga dugmad */
   font-size: 16px;
-  background: linear-gradient(to right, #ff80ab, #f06292);
-  border: none;
-  border-radius: 12px;
-  color: white;
   font-weight: bold;
+  border: 2px solid #ff80ab;
+  background-color: transparent;
+  color: #ff80ab;
+  border-radius: 12px;
   cursor: pointer;
-  transition: transform 0.2s, opacity 0.2s;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+
+  /* OVIM izjednačavaš stil veličine sa regularnim dugmadima */
+  background-image: none;
+  text-align: center;
 }
+
 
 .mode-container button:hover {
   opacity: 0.9;
