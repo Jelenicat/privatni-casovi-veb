@@ -47,6 +47,21 @@ export default function Register() {
         },
       });
 
+try {
+  await fetch('https://email-api-jelenas-projects-7386403f.vercel.app/api/sendEmail', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: user.email,
+      tip: 'registracija-profesor'
+    }),
+  });
+} catch (err) {
+  console.warn('Greška pri slanju mejla:', err);
+}
+
+
+
       navigate('/edit-profile', { replace: true });
     } catch (error) {
       setError(error.message);
