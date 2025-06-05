@@ -131,6 +131,7 @@ export default function ProfessorProfileScreenWeb() {
           profesorEmail: professor.email,
           nacinCasa: finalMode,
           jitsiLink,
+           tip: 'zakazivanje'
         }),
       });
 
