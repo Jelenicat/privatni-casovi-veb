@@ -1,3 +1,5 @@
+/* SelectMode.css */
+
 .mode-background {
   background-size: cover;
   background-position: center;
@@ -33,55 +35,36 @@
   font-size: 26px;
 }
 
-.mode-container .back-button {
-  display: block;
-  width: 100%; /* OVO je već isto kao ostala dugmad */
-  margin: 15px 0;
-  padding: 15px; /* isto kao i druga dugmad */
-  font-size: 16px;
-  font-weight: bold;
-  border: 2px solid #ff80ab;
-  background-color: transparent;
-  color: #ff80ab;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-
-  /* OVIM izjednačavaš stil veličine sa regularnim dugmadima */
-  background-image: none;
-  text-align: center;
-}
-
-
-.mode-container button:hover {
-  opacity: 0.9;
-}
-
-.mode-container button:active {
-  transform: scale(0.98);
-}
-
-/* === STIL ZA NAZAD dugme === */
-.mode-container .back-button {
-  display: block;
+.mode-container button {
   width: 100%;
-  margin: 15px 0;
+  margin: 10px 0;
   padding: 15px;
   font-size: 16px;
   font-weight: bold;
-  border: 2px solid #ff80ab;
-  background: transparent;
-  color: #ff80ab;
+  background-color: #ff80ab;
+  color: white;
+  border: none;
   border-radius: 12px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
- 
+  transition: background-color 0.3s ease;
+}
+
+.mode-container button:hover {
+  background-color: #ff5c97;
+}
+
+.mode-container .back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: #ff80ab;
+  border: 2px solid #ff80ab;
+  margin-top: 25px;
 }
 
 .mode-container .back-button:hover {
   background-color: #ff80ab;
-  color: #121212;
-  box-shadow: 0 0 10px #ff80ab;
+  color: white;
 }
