@@ -19,10 +19,12 @@ export default function SelectMode() {
     <div className="mode-background" style={{ backgroundImage: `url(${bg7})` }}>
       <div className="mode-overlay">
         <div className="mode-container">
-          <h1>Kako želiš da se čas odvija?</h1>
-          <button onClick={() => handleSelect('uzivo')}>Uživo</button>
-          <button onClick={() => handleSelect('online')}>Online</button>
-          <button onClick={() => handleSelect('oba')}>Svejedno (oba)</button>
+          <h1 className="mode-title">Kako želiš da se čas odvija?</h1>
+          <div className="button-group">
+            <button onClick={() => handleSelect('uzivo')}>Uživo</button>
+            <button onClick={() => handleSelect('online')}>Online</button>
+            <button onClick={() => handleSelect('oba')}>Svejedno (oba)</button>
+          </div>
           <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
         </div>
       </div>
