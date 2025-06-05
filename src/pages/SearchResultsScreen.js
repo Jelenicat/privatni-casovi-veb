@@ -35,9 +35,9 @@ export default function SearchResultsScreen() {
       const [grad, opstina] = locationParam?.split(' - ') || [];
       const s = subjects;
 
-      snap.forEach((doc) => {
-        const data = doc.data();
-        const id = doc.id;
+      for (const docItem of snap.docs) {
+        const data = docItem.data();
+        const id = docItem.id;
 
         const nivoMatch = data.nivoi?.[levelFromParam] === true;
         const predmetMatch = Object.keys(s).some((k) => s[k] && data.predmeti?.[k]);
@@ -66,9 +66,13 @@ export default function SearchResultsScreen() {
         }
 
         if (nivoMatch && predmetMatch && include) {
-          lista.push({ id, ...data });
+          const oceneSnap = await getDocs(collection(db, 'profesori', id, 'oceneKomentari'));
+          const ocene = oceneSnap.docs.map(doc => doc.data().ocena);
+          const avgRating = ocene.length > 0 ? ocene.reduce((a, b) => a + b, 0) / ocene.length : null;
+
+          lista.push({ id, ...data, prosecnaOcena: avgRating });
         }
-      });
+      }
 
       setProfesori(lista);
     };
@@ -87,7 +91,7 @@ export default function SearchResultsScreen() {
           <div key={prof.id} className="card" onClick={() => navigate(`/professor/${prof.id}`)}>
             <div className="badges">
               {prof.nacinCasova?.online && <div className="badge badge-online">ONLINE</div>}
-              {prof.nacinCasova?.uzivo && <div className="badge badge-uzivo">UŽIVO</div>}
+              {prof.nacinCasova?.uzivo && <div className="badge badge-uzivo">Uživo</div>}
             </div>
 
             <h2 className="prof-name">{prof.ime || 'Nepoznat profesor'}</h2>
@@ -126,6 +130,13 @@ export default function SearchResultsScreen() {
             <p className="prof-price">
               💰 {prof.cena ? `${prof.cena} RSD po času` : 'Cena nije navedena'}
             </p>
+
+            {prof.prosecnaOcena !== null && (
+              <p className="prof-rating">
+                ⭐ Prosečna ocena: {prof.prosecnaOcena.toFixed(2)}
+              </p>
+            )}
+
           </div>
         ))
       )}

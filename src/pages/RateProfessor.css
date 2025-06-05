@@ -1,0 +1,47 @@
+.rate-container {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: 40px auto;
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 128, 171, 0.15);
+}
+
+.rate-container h2 {
+  color: #ff80ab;
+  margin-bottom: 1rem;
+}
+
+.rate-container label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.rate-container input,
+.rate-container textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ff80ab;
+  margin-bottom: 15px;
+  background: #2a2a2a;
+  color: white;
+}
+
+.rate-container button {
+  padding: 10px 20px;
+  background-color: #ff80ab;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.rate-message {
+  color: white;
+  text-align: center;
+  margin-top: 100px;
+  font-size: 1.2rem;
+}

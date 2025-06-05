@@ -14,6 +14,7 @@ import AddAvailability from './pages/AddAvailability';
 import CalendarView from './pages/CalendarView';
 import Register from './pages/Register'; 
 import SelectMode from './pages/SelectMode';
+import RateProfessor from './pages/RateProfessor';
 
 
 
@@ -37,6 +38,8 @@ function App() {
       <Route path="/calendar-view" element={<CalendarView />} />
       <Route path="/register" element={<Register />} />
       <Route path="/mode" element={<SelectMode />} />
+      <Route path="/rate/:rezervacijaId" element={<RateProfessor />} />
+
 
     </Routes>
   );

@@ -187,6 +187,12 @@ export default function ProfessorProfileScreenWeb() {
             }).join(', ')
           }</p>
           <p className="info">💰 {professor.cena ? `${professor.cena} RSD` : 'Nije navedena'}</p>
+          {oceneKomentari.length > 0 && (
+  <p className="info">⭐ Prosečna ocena: {
+    (oceneKomentari.reduce((sum, item) => sum + item.ocena, 0) / oceneKomentari.length).toFixed(2)
+  }</p>
+)}
+
           <div className="info">
             {professor.nacinCasova?.uzivo && <span className="badge-uzivo">🏠 Uživo</span>}
             {professor.nacinCasova?.online && <span className="badge-online">💻 Online</span>}
@@ -260,21 +266,22 @@ export default function ProfessorProfileScreenWeb() {
             <button className="back-button" onClick={handleBack}>⟵ Nazad</button>
           </div>
 
-          <h2>📝 Komentari i ocene</h2>
-          {mozeOceniti && (
-            <>
-              <input type="number" placeholder="Ocena (1-5)" value={ocena} onChange={e => setOcena(e.target.value)} />
-              <textarea placeholder="Komentar" value={komentar} onChange={e => setKomentar(e.target.value)}></textarea>
-              <button onClick={posaljiKomentar}>Pošalji</button>
-            </>
-          )}
+        <h2>📝 Komentari i ocene</h2>
 
-          {oceneKomentari.map((item, idx) => (
-            <div key={idx} className="komentar-item">
-              <p>⭐ Ocena: {item.ocena}</p>
-              <p>💬 {item.komentar}</p>
-            </div>
-          ))}
+{oceneKomentari.length > 0 ? (
+  <>
+
+    {oceneKomentari.map((item, idx) => (
+      <div key={idx} className="komentar-item">
+        <p><strong>⭐ Ocena:</strong> {item.ocena}</p>
+        <p><strong>💬 Komentar:</strong> {item.komentar}</p>
+      </div>
+    ))}
+  </>
+) : (
+  <p className="info">Još nema komentara za ovog profesora.</p>
+)}
+
         </>
       )}
     </div>
