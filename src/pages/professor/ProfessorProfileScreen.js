@@ -7,7 +7,7 @@ import {
   doc, getDoc, collection, getDocs, deleteDoc, setDoc, addDoc, query, where
 } from 'firebase/firestore';
 import { db } from '../../firebase/firebase';
-import ProfessorSchema from '../../../components/ProfessorSchema';
+import ProfessorSchema from '../../components/ProfessorSchema';
 
 
 
