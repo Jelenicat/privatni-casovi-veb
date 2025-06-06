@@ -100,6 +100,7 @@ export default function ProfessorProfileScreenWeb() {
         telefonUcenika,
         nacinCasa: finalMode,
         jitsiLink: finalMode === 'online' ? jitsiLink : '',
+        ratingSent: false  // ⬅⬅⬅ OVO DODAJ
       });
 
       const terminRef = doc(db, 'profesori', id, 'slobodniTermini', selectedSlot.dan);
