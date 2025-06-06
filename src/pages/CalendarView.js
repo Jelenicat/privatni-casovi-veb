@@ -65,7 +65,13 @@ export default function CalendarView() {
     fetchTermini();
   }, []);
 
-  const formatDate = (date) => date.toISOString().split('T')[0];
+  // ISPRAVLJENO: koristi lokalni datum umesto UTC
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = (`0${date.getMonth() + 1}`).slice(-2);
+    const day = (`0${date.getDate()}`).slice(-2);
+    return `${year}-${month}-${day}`;
+  };
 
   const handleCancelClass = async (t) => {
     const vremePocetka = new Date(`${t.datum}T${t.vreme}`);
