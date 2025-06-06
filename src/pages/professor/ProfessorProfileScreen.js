@@ -179,25 +179,31 @@ export default function ProfessorProfileScreenWeb() {
         <p className="loading">Učitavanje...</p>
       ) : (
         <>
-        <ProfessorSchema
+<ProfessorSchema
   professor={{
     id,
     ime: professor.ime,
     predmeti: Object.entries(professor.predmeti || {}).filter(([, v]) => v).map(([k]) => k),
     nivoObrazovanja: Object.entries(professor.nivoi || {}).filter(([, v]) => v).map(([k]) => k),
     grad: (() => {
-  const gradovi = Object.keys(professor.gradovi || {});
-  if (gradovi.includes('Beograd') && professor.opstine) {
-    const izabraneOpstine = Object.entries(professor.opstine)
-      .filter(([, v]) => v)
-      .map(([k]) => `Beograd - ${k}`);
-    if (izabraneOpstine.length > 0) return izabraneOpstine.join(', ');
-  }
-  return gradovi[0] || 'Nepoznat grad';
-})()
-
+      const gradovi = Object.keys(professor.gradovi || {});
+      if (gradovi.includes('Beograd') && professor.opstine) {
+        const izabraneOpstine = Object.entries(professor.opstine)
+          .filter(([, v]) => v)
+          .map(([k]) => `Beograd - ${k}`);
+        if (izabraneOpstine.length > 0) return izabraneOpstine.join(', ');
+      }
+      return gradovi[0] || 'Nepoznat grad';
+    })(),
+    cena: professor.cena || '',
+    prosecnaOcena: oceneKomentari.length
+      ? (oceneKomentari.reduce((s, x) => s + x.ocena, 0) / oceneKomentari.length).toFixed(2)
+      : undefined,
+    brojKomentara: oceneKomentari.length || undefined,
+    nacinCasova: professor.nacinCasova || {}
   }}
 />
+
 
           <h1>{professor.ime}</h1>
           <p className="info">📚 {Object.entries(professor.predmeti || {}).filter(([, v]) => v).map(([k]) => k).join(', ')}</p>
