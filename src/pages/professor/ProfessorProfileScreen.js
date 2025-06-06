@@ -7,6 +7,8 @@ import {
   doc, getDoc, collection, getDocs, deleteDoc, setDoc, addDoc, query, where
 } from 'firebase/firestore';
 import { db } from '../../firebase/firebase';
+import ProfessorSchema from '../../components/ProfessorSchema';
+
 
 export default function ProfessorProfileScreenWeb() {
   const { id } = useParams();
@@ -176,6 +178,26 @@ export default function ProfessorProfileScreenWeb() {
         <p className="loading">Učitavanje...</p>
       ) : (
         <>
+        <ProfessorSchema
+  professor={{
+    id,
+    ime: professor.ime,
+    predmeti: Object.entries(professor.predmeti || {}).filter(([, v]) => v).map(([k]) => k),
+    nivoObrazovanja: Object.entries(professor.nivoi || {}).filter(([, v]) => v).map(([k]) => k),
+    grad: (() => {
+  const gradovi = Object.keys(professor.gradovi || {});
+  if (gradovi.includes('Beograd') && professor.opstine) {
+    const izabraneOpstine = Object.entries(professor.opstine)
+      .filter(([, v]) => v)
+      .map(([k]) => `Beograd - ${k}`);
+    if (izabraneOpstine.length > 0) return izabraneOpstine.join(', ');
+  }
+  return gradovi[0] || 'Nepoznat grad';
+})()
+
+  }}
+/>
+
           <h1>{professor.ime}</h1>
           <p className="info">📚 {Object.entries(professor.predmeti || {}).filter(([, v]) => v).map(([k]) => k).join(', ')}</p>
           <p className="info">🎓 {Object.entries(professor.nivoi || {}).filter(([, v]) => v).map(([k]) => k).join(', ')}</p>
