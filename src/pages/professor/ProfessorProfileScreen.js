@@ -100,7 +100,8 @@ export default function ProfessorProfileScreenWeb() {
         telefonUcenika,
         nacinCasa: finalMode,
         jitsiLink: finalMode === 'online' ? jitsiLink : '',
-        ratingSent: false  // ⬅⬅⬅ OVO DODAJ
+        ratingSent: false,
+        status: 'zakazano' // ⬅⬅⬅ OVO DODAJEMO ZA OTKAZIVANJE
       });
 
       const terminRef = doc(db, 'profesori', id, 'slobodniTermini', selectedSlot.dan);
@@ -132,7 +133,8 @@ export default function ProfessorProfileScreenWeb() {
           profesorEmail: professor.email,
           nacinCasa: finalMode,
           jitsiLink,
-           tip: 'zakazivanje'
+          tip: 'zakazivanje',
+          profesorId: id // ⬅⬅⬅ NEOPHODNO ZA GENERISANJE cancel LINKA
         }),
       });
 
