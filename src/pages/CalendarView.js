@@ -91,7 +91,7 @@ export default function CalendarView() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          tip: 'otkazivanje',
+          tip: 'otkazivanje-profesor', // ✅ ispravno za profesora
           ime: t.ime || '',
           prezime: t.prezime || '',
           datum: t.datum,

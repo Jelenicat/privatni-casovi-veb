@@ -66,7 +66,7 @@ export default function CancelReservation() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              tip: 'otkazivanje-profesor',
+              tip: 'otkazivanje',
               ime: data.ime,
               prezime: data.prezime,
               datum: data.datum,
