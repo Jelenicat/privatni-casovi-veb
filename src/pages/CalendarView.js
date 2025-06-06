@@ -3,7 +3,7 @@ import './CalendarView.css';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { auth, db } from '../firebase/firebase';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs, query, where, doc, updateDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 const isSameDay = (date1, date2) =>
@@ -39,7 +39,8 @@ export default function CalendarView() {
       const rezSnap = await getDocs(q);
 
       rezSnap.forEach(docSnap => {
-        const { datum, vreme, ime, prezime, nacinCasa, jitsiLink } = docSnap.data();
+        const { datum, vreme, ime, prezime, nacinCasa, jitsiLink, status } = docSnap.data();
+        if (status === 'otkazano') return;
         const ucenik = ime && prezime ? `${ime} ${prezime}` : 'Nepoznat učenik';
         oznake[datum] = oznake[datum] || { slobodan: false, zauzet: false };
         oznake[datum].zauzet = true;
@@ -48,7 +49,9 @@ export default function CalendarView() {
           tip: 'zauzet',
           ucenik,
           nacinCasa,
-          jitsiLink
+          jitsiLink,
+          id: docSnap.id,
+          datum
         }];
       });
 
@@ -60,6 +63,47 @@ export default function CalendarView() {
   }, []);
 
   const formatDate = (date) => date.toISOString().split('T')[0];
+
+  const handleCancelClass = async (t) => {
+    const vremePocetka = new Date(`${t.datum}T${t.vreme}`);
+    const sada = new Date();
+
+    if (vremePocetka - sada < 2 * 60 * 60 * 1000) {
+      alert('Čas se može otkazati najkasnije 2 sata unapred.');
+      return;
+    }
+
+    if (!window.confirm('Da li ste sigurni da želite da otkažete čas?')) return;
+
+    try {
+      const user = auth.currentUser;
+
+      await fetch(`https://email-api-jelenas-projects-7386403f.vercel.app/api/sendEmail`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tip: 'otkazivanje',
+          ime: t.ucenik.split(' ')[0] || '',
+          prezime: t.ucenik.split(' ')[1] || '',
+          datum: t.datum,
+          vreme: t.vreme,
+          profesorEmail: user.email,
+          nacinCasa: t.nacinCasa || '',
+          email: user.email
+        })
+      });
+
+      await updateDoc(doc(db, 'rezervacije', t.id), {
+        status: 'otkazano'
+      });
+
+      alert('Čas je otkazan.');
+      window.location.reload();
+    } catch (e) {
+      alert('Greška pri otkazivanju.');
+      console.error(e);
+    }
+  };
 
   const prikaziTermine = () => {
     if (!selectedDate) return null;
@@ -93,6 +137,28 @@ export default function CalendarView() {
                       📹 Pristupi online času
                     </a>
                   </div>
+                )}
+
+                {t.tip === 'zauzet' && (
+                  <>
+                    <button
+                      style={{
+                        marginTop: '10px',
+                        backgroundColor: '#d81b60',
+                        color: 'white',
+                        padding: '10px 15px',
+                        borderRadius: '5px',
+                        border: 'none',
+                        cursor: 'pointer'
+                      }}
+                      onClick={() => handleCancelClass(t)}
+                    >
+                      Otkaži čas
+                    </button>
+                    <p style={{ color: '#aaa', fontSize: '12px', marginTop: '5px' }}>
+                      Čas se može otkazati najkasnije 2 sata unapred.
+                    </p>
+                  </>
                 )}
               </div>
               {t.ucenik && (
