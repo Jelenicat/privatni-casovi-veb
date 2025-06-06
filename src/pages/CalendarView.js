@@ -39,7 +39,7 @@ export default function CalendarView() {
       const rezSnap = await getDocs(q);
 
       rezSnap.forEach(docSnap => {
-        const { datum, vreme, ime, prezime, nacinCasa, jitsiLink, status } = docSnap.data();
+        const { datum, vreme, ime, prezime, nacinCasa, jitsiLink, status, email } = docSnap.data();
         if (status === 'otkazano') return;
         const ucenik = ime && prezime ? `${ime} ${prezime}` : 'Nepoznat učenik';
         oznake[datum] = oznake[datum] || { slobodan: false, zauzet: false };
@@ -51,7 +51,10 @@ export default function CalendarView() {
           nacinCasa,
           jitsiLink,
           id: docSnap.id,
-          datum
+          datum,
+          ime,
+          prezime,
+          email
         }];
       });
 
@@ -83,13 +86,13 @@ export default function CalendarView() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           tip: 'otkazivanje',
-          ime: t.ucenik.split(' ')[0] || '',
-          prezime: t.ucenik.split(' ')[1] || '',
+          ime: t.ime || '',
+          prezime: t.prezime || '',
           datum: t.datum,
           vreme: t.vreme,
           profesorEmail: user.email,
           nacinCasa: t.nacinCasa || '',
-          email: user.email
+          email: t.email
         })
       });
 
@@ -97,7 +100,7 @@ export default function CalendarView() {
         status: 'otkazano'
       });
 
-      alert('Čas je otkazan.');
+      alert('Čas je otkazan. Učenik je obavešten.');
       window.location.reload();
     } catch (e) {
       alert('Greška pri otkazivanju.');
@@ -142,18 +145,11 @@ export default function CalendarView() {
                 {t.tip === 'zauzet' && (
                   <>
                     <button
-                      style={{
-                        marginTop: '10px',
-                        backgroundColor: '#d81b60',
-                        color: 'white',
-                        padding: '10px 15px',
-                        borderRadius: '5px',
-                        border: 'none',
-                        cursor: 'pointer'
-                      }}
+                      className="join-meeting-button"
+                      style={{ marginTop: '10px', backgroundColor: '#d81b60' }}
                       onClick={() => handleCancelClass(t)}
                     >
-                      Otkaži čas
+                      ❌ Otkaži čas
                     </button>
                     <p style={{ color: '#aaa', fontSize: '12px', marginTop: '5px' }}>
                       Čas se može otkazati najkasnije 2 sata unapred.
