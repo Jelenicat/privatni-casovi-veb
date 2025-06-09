@@ -2,13 +2,15 @@
   text-align: center;
   padding: 20px 10px;
   font-size: 0.9rem;
-  color: #888;
-  background-color: #f8f8f8;
+  color: #ccc;
+  background-color: rgba(0, 0, 0, 0.4); /* poluprovidna crna pozadina */
   margin-top: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* tanak providan gornji border */
+  backdrop-filter: blur(5px); /* blagi blur iza, opcionalno */
 }
 
 .footer-links a {
-  color: #888;
+  color: #ccc;
   margin: 0 8px;
   text-decoration: none;
 }
@@ -19,5 +21,5 @@
 }
 
 .footer-links span {
-  color: #bbb;
+  color: #999;
 }
