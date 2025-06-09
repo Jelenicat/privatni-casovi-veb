@@ -40,252 +40,569 @@
     }
     </script>
 
-    <!-- Schema: Kursevi -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Course",
-      "name": "Privatni časovi iz matematike",
-      "description": "Kvalitetni privatni časovi iz matematike za osnovnu, srednju školu i fakultet. Prilagođeno svakom nivou znanja.",
-      "provider": {
-        "@type": "Organization",
-        "name": "Privatni časovi",
-        "url": "https://www.pronadjiprofesora.com"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "1000",
-        "priceCurrency": "RSD",
-        "availability": "https://schema.org/InStock",
-        "url": "https://www.pronadjiprofesora.com"
-      },
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "online",
-        "instructor": {
-          "@type": "Person",
-          "name": "Jelena Tanasković"
-        },
-        "startDate": "2025-06-10",
-        "location": {
-          "@type": "VirtualLocation",
-          "url": "https://www.pronadjiprofesora.com"
-        }
-      }
+ <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-matematika",
+  "name": "Privatni časovi iz matematike",
+  "description": "Kvalitetni privatni časovi iz matematike za osnovnu, srednju školu i fakultet. Prilagođeno svakom nivou znanja.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
     }
-    </script>
+  }
+}
+</script>
 
-    <!-- Ostali kursevi sa istim podacima za offers i instance -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Course",
-      "name": "Privatni časovi iz engleskog",
-      "description": "Kvalitetni privatni časovi iz engleskog za osnovnu, srednju školu i fakultet. Prilagođeno svakom nivou znanja.",
-      "provider": {
-        "@type": "Organization",
-        "name": "Privatni časovi",
-        "url": "https://www.pronadjiprofesora.com"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "1000",
-        "priceCurrency": "RSD",
-        "availability": "https://schema.org/InStock",
-        "url": "https://www.pronadjiprofesora.com"
-      },
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "online",
-        "instructor": {
-          "@type": "Person",
-          "name": "Jelena Tanasković"
-        },
-        "startDate": "2025-06-10",
-        "location": {
-          "@type": "VirtualLocation",
-          "url": "https://www.pronadjiprofesora.com"
-        }
-      }
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-engleski",
+  "name": "Privatni časovi iz engleskog",
+  "description": "Kvalitetni privatni časovi iz engleskog za osnovnu, srednju školu i fakultet. Prilagođeno svakom nivou znanja.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
     }
-    </script>
-
-    <!-- Isto za fiziku, hemiju, informatiku, italijanski, biologiju -->
-    <!-- Samo se name i description razlikuju -->
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Course",
-      "name": "Privatni časovi iz fizike",
-      "description": "Kvalitetni privatni časovi iz fizike za osnovnu, srednju školu i fakultet. Prilagođeno svakom nivou znanja.",
-      "provider": {
-        "@type": "Organization",
-        "name": "Privatni časovi",
-        "url": "https://www.pronadjiprofesora.com"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "1000",
-        "priceCurrency": "RSD",
-        "availability": "https://schema.org/InStock",
-        "url": "https://www.pronadjiprofesora.com"
-      },
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "online",
-        "instructor": {
-          "@type": "Person",
-          "name": "Jelena Tanasković"
-        },
-        "startDate": "2025-06-10",
-        "location": {
-          "@type": "VirtualLocation",
-          "url": "https://www.pronadjiprofesora.com"
-        }
-      }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-fizika",
+  "name": "Privatni časovi iz fizike",
+  "description": "Kvalitetni privatni časovi iz fizike za osnovnu, srednju školu i fakultet. Prilagođeno svakom nivou znanja.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
     }
-    </script>
-
-    <!-- Hemija -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Course",
-      "name": "Privatni časovi iz hemije",
-      "description": "Kvalitetni privatni časovi iz hemije za osnovnu, srednju školu i fakultet. Prilagođeno svakom nivou znanja.",
-      "provider": {
-        "@type": "Organization",
-        "name": "Privatni časovi",
-        "url": "https://www.pronadjiprofesora.com"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "1000",
-        "priceCurrency": "RSD",
-        "availability": "https://schema.org/InStock",
-        "url": "https://www.pronadjiprofesora.com"
-      },
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "online",
-        "instructor": {
-          "@type": "Person",
-          "name": "Jelena Tanasković"
-        },
-        "startDate": "2025-06-10",
-        "location": {
-          "@type": "VirtualLocation",
-          "url": "https://www.pronadjiprofesora.com"
-        }
-      }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-hemija",
+  "name": "Privatni časovi iz hemije",
+  "description": "Kvalitetni privatni časovi iz hemije za osnovnu, srednju školu i fakultet. Prilagođeno svakom nivou znanja.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
     }
-    </script>
-
-    <!-- Informatika -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Course",
-      "name": "Privatni časovi iz informatike",
-      "description": "Kvalitetni privatni časovi iz informatike za osnovnu, srednju školu i fakultet. Prilagođeno svakom nivou znanja.",
-      "provider": {
-        "@type": "Organization",
-        "name": "Privatni časovi",
-        "url": "https://www.pronadjiprofesora.com"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "1000",
-        "priceCurrency": "RSD",
-        "availability": "https://schema.org/InStock",
-        "url": "https://www.pronadjiprofesora.com"
-      },
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "online",
-        "instructor": {
-          "@type": "Person",
-          "name": "Jelena Tanasković"
-        },
-        "startDate": "2025-06-10",
-        "location": {
-          "@type": "VirtualLocation",
-          "url": "https://www.pronadjiprofesora.com"
-        }
-      }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-biologija",
+  "name": "Privatni časovi iz biologije",
+  "description": "Kvalitetni privatni časovi iz biologije za osnovnu, srednju školu i fakultet. Prilagođeno svakom nivou znanja.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
     }
-    </script>
-
-    <!-- Italijanski -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Course",
-      "name": "Privatni časovi iz italijanskog",
-      "description": "Kvalitetni privatni časovi iz italijanskog za osnovnu, srednju školu i fakultet. Prilagođeno svakom nivou znanja.",
-      "provider": {
-        "@type": "Organization",
-        "name": "Privatni časovi",
-        "url": "https://www.pronadjiprofesora.com"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "1000",
-        "priceCurrency": "RSD",
-        "availability": "https://schema.org/InStock",
-        "url": "https://www.pronadjiprofesora.com"
-      },
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "online",
-        "instructor": {
-          "@type": "Person",
-          "name": "Jelena Tanasković"
-        },
-        "startDate": "2025-06-10",
-        "location": {
-          "@type": "VirtualLocation",
-          "url": "https://www.pronadjiprofesora.com"
-        }
-      }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-informatika",
+  "name": "Privatni časovi iz informatike",
+  "description": "Kvalitetni privatni časovi iz informatike za osnovnu, srednju školu i fakultet. Prilagođeno svakom nivou znanja.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
     }
-    </script>
-
-    <!-- Biologija -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Course",
-      "name": "Privatni časovi iz biologije",
-      "description": "Kvalitetni privatni časovi iz biologije za osnovnu, srednju školu i fakultet. Prilagođeno svakom nivou znanja.",
-      "provider": {
-        "@type": "Organization",
-        "name": "Privatni časovi",
-        "url": "https://www.pronadjiprofesora.com"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "1000",
-        "priceCurrency": "RSD",
-        "availability": "https://schema.org/InStock",
-        "url": "https://www.pronadjiprofesora.com"
-      },
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "online",
-        "instructor": {
-          "@type": "Person",
-          "name": "Jelena Tanasković"
-        },
-        "startDate": "2025-06-10",
-        "location": {
-          "@type": "VirtualLocation",
-          "url": "https://www.pronadjiprofesora.com"
-        }
-      }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-italijanski",
+  "name": "Privatni časovi iz italijanskog",
+  "description": "Kvalitetni privatni časovi iz italijanskog za osnovnu, srednju školu i fakultet. Prilagođeno svakom nivou znanja.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
     }
-    </script>
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-srpski",
+  "name": "Privatni časovi iz srpskog jezika",
+  "description": "Privatni časovi iz srpskog jezika za osnovce, srednjoškolce i studente. Pomoć pri pisanju sastava, razumevanju književnosti i gramatici.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-nemacki",
+  "name": "Privatni časovi iz nemačkog jezika",
+  "description": "Privatni časovi nemačkog jezika za sve nivoe. Priprema za testove, konverzacija, gramatika i vokabular.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+   "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-francuski",
+  "name": "Privatni časovi iz francuskog jezika",
+  "description": "Časovi francuskog jezika za početnike i napredne. Priprema za DELF/DALF, konverzacija i gramatika.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+   "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-fizika2",
+  "name": "Privatni časovi iz fizike 2",
+  "description": "Napredni časovi fizike za srednju školu i fakultet – mehanika, elektromagnetizam, termodinamika.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+   "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-elektrotehnika",
+  "name": "Privatni časovi iz elektrotehnike",
+  "description": "Individualni časovi elektrotehnike – teorijska i praktična znanja za srednjoškolce i studente.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+   "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-sociologija",
+  "name": "Privatni časovi iz sociologije",
+  "description": "Časovi iz sociologije za razumevanje društva, kultura i savremenih problema. Prilagođeno svakom nivou znanja.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-marketing",
+  "name": "Privatni časovi iz marketinga",
+  "description": "Digitalni i tradicionalni marketing – pomoć u učenju, izradi zadataka i razumevanju strategija.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-statistika-psihologija",
+  "name": "Statistika za psihologe",
+  "description": "Časovi statistike prilagođeni studentima psihologije – SPSS, analiza podataka, t-test, ANOVA.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": "https://www.pronadjiprofesora.com/#course-zdravstvena-nega",
+  "name": "Privatni časovi iz zdravstvene nege",
+  "description": "Podrška studentima i učenicima medicinskih škola u oblasti zdravstvene nege i praktične nastave.",
+  "educationalLevel": ["Osnovna škola", "Srednja škola", "Fakultet"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Privatni časovi",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1000",
+    "priceCurrency": "RSD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.pronadjiprofesora.com"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "instructor": {
+      "@type": "Person",
+      "name": "Jelena Tanasković"
+    },
+    "startDate": "2025-06-10",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://www.pronadjiprofesora.com"
+    }
+  }
+}
+</script>
+
 
   </head>
   <body>
