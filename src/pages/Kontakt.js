@@ -1,6 +1,6 @@
 import React from 'react';
 import KontaktForma from '../components/KontaktForma';
-import './Kontakt.css';
+import '../components/KontaktForma.css';
 
 export default function Kontakt() {
   return (
