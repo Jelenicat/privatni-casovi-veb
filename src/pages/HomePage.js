@@ -1,6 +1,8 @@
 import React from 'react';
 import './HomePage.css';
 import bg from '../assets/bg.jpg'; // obavezno ubaci sliku u public ili src/assets
+import Footer from '../components/Footer';
+
 
 export default function HomePage({ navigate }) {
   return (
@@ -20,6 +22,9 @@ export default function HomePage({ navigate }) {
           </button>
         </div>
       </div>
+      <Footer />
+
     </div>
+    
   );
 }
