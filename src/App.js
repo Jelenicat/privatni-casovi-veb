@@ -28,7 +28,7 @@ function App() {
   const navigate = useNavigate();
 
   return (
-    <>
+ <div className="app-content">
     <Routes>
       <Route path="/" element={<HomePage navigate={navigate} />} />
       <Route path="/education" element={<EducationScreen navigate={navigate} />} />
@@ -52,9 +52,8 @@ function App() {
 
    
     </Routes>
-      {/* ✅ Footer ispod svih ruta */}
-      <Footer />
-    </>
+        <Footer />
+    </div>
   );
 }
 
