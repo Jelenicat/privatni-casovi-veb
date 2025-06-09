@@ -1,13 +1,11 @@
-// 📄 Kontakt.js
 import React from 'react';
-import './LegalPage.css';
+import KontaktForma from '../components/KontaktForma';
+import './Kontakt.css';
 
 export default function Kontakt() {
   return (
-    <div className="legal-page">
-      <h1>Kontaktirajte nas</h1>
-      <p>Za sva pitanja, sugestije ili tehničke probleme, možete nas kontaktirati putem email adrese:</p>
-      <p><a href="mailto:kontakt@pronadjiprofesora.com">kontakt@pronadjiprofesora.com</a></p>
+    <div className="kontakt-stranica">
+      <KontaktForma />
     </div>
   );
 }
