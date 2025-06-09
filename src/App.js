@@ -16,6 +16,10 @@ import Register from './pages/Register';
 import SelectMode from './pages/SelectMode';
 import RateProfessor from './pages/RateProfessor';
 import CancelLesson from './pages/cancel/[id]';
+import Privatnost from './pages/Privatnost';
+import Uslovi from './pages/Uslovi';
+import Kontakt from './pages/Kontakt';
+import Footer from './components/Footer';
 
 
 
@@ -24,6 +28,7 @@ function App() {
   const navigate = useNavigate();
 
   return (
+    <>
     <Routes>
       <Route path="/" element={<HomePage navigate={navigate} />} />
       <Route path="/education" element={<EducationScreen navigate={navigate} />} />
@@ -41,10 +46,15 @@ function App() {
       <Route path="/mode" element={<SelectMode />} />
       <Route path="/rate/:rezervacijaId" element={<RateProfessor />} />
       <Route path="/cancel/:id" element={<CancelLesson />} />
+      <Route path="/privatnost" element={<Privatnost />} />
+<Route path="/uslovi" element={<Uslovi />} />
+<Route path="/kontakt" element={<Kontakt />} />
 
-
-
+   
     </Routes>
+      {/* ✅ Footer ispod svih ruta */}
+      <Footer />
+    </>
   );
 }
 

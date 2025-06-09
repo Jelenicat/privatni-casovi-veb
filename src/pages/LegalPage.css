@@ -1,0 +1,25 @@
+.legal-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  line-height: 1.7;
+  font-size: 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.legal-page h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.legal-page h2 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.legal-page a {
+  color: #ff80ab;
+  text-decoration: underline;
+}
