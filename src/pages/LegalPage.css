@@ -1,25 +1,48 @@
 .legal-page {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  line-height: 1.7;
-  font-size: 1rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  color: #121212;
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(255, 105, 180, 0.15); /* blaga roze senka */
+  font-family: 'Poppins', sans-serif;
 }
 
 .legal-page h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  color: #ff80ab;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .legal-page h2 {
-  font-size: 1.25rem;
-  margin-top: 1.5rem;
+  color: #f06292;
+  margin-top: 30px;
+  font-size: 1.4rem;
+}
+
+.legal-page p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.legal-page ul {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.legal-page li {
+  font-size: 1.05rem;
+  line-height: 1.5;
 }
 
 .legal-page a {
-  color: #ff80ab;
+  color: #ff4081;
   text-decoration: underline;
+}
+
+.legal-page a:hover {
+  color: #d81b60;
 }

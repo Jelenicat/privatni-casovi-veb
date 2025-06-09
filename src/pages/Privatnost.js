@@ -26,7 +26,7 @@ export default function Privatnost() {
       </ul>
 
       <h2>Ko ima pristup vašim podacima?</h2>
-      <p>Podaci se čuvaju u sigurnoj Firebase bazi podataka. Ne delimo ih sa trećim licima. Email i telefon profesora se prikazuju samo registrovanim učenicima prilikom rezervacije.</p>
+      <p>Podaci se čuvaju u sigurnoj Firebase bazi podataka. Ne delimo ih sa trećim licima. Email profesora se prikazuju samo učenicima prilikom rezervacije.</p>
 
       <h2>Kolačići (Cookies)</h2>
       <p>Sajt koristi kolačiće kako bi zapamtio vaše izbore i poboljšao korisničko iskustvo. Korišćenjem sajta pristajete na upotrebu kolačića.</p>
