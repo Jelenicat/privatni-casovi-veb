@@ -1,10 +1,9 @@
 .background {
-  height: 100vh;
+  min-height: 100vh;
   background-size: cover;
   background-position: center;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column; /* važno za pozicioniranje footera */
 }
 
 .overlay {
@@ -15,6 +14,7 @@
   width: 90%;
   text-align: center;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  margin: auto; /* centriranje po visini */
 }
 
 .header .title {
@@ -52,4 +52,9 @@
 
 .gradientButton:hover {
   opacity: 0.9;
+}
+
+/* Obezbeđuje da footer ide ispod .overlay */
+.footer {
+  margin-top: auto;
 }
