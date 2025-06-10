@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { marked } from "marked";
+import { useParams } from "react-router-dom";
 
-export default function BlogPost({ match }) {
+export default function BlogPost() {
+  const { slug } = useParams();
   const [postContent, setPostContent] = useState("");
 
   useEffect(() => {
     async function fetchBlogPost() {
       try {
-        const res = await fetch(`/blog/${match.params.slug}.md`);
+        const res = await fetch(`/blog/${slug}.md`);
         const text = await res.text();
         setPostContent(text);
       } catch (error) {
@@ -16,7 +18,7 @@ export default function BlogPost({ match }) {
     }
 
     fetchBlogPost();
-  }, [match.params.slug]);
+  }, [slug]);
 
   return (
     <div>
