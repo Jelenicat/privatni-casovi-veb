@@ -20,6 +20,9 @@ import Privatnost from './pages/Privatnost';
 import Uslovi from './pages/Uslovi';
 import Kontakt from './pages/Kontakt';
 import Footer from './components/Footer';
+import BlogList from "./pages/BlogList";
+import BlogPost from "./pages/BlogPost";
+
 
 
 
@@ -51,6 +54,8 @@ function App() {
       <Route path="/privatnost" element={<Privatnost />} />
 <Route path="/uslovi" element={<Uslovi />} />
 <Route path="/kontakt" element={<Kontakt />} />
+      <Route path="/blog" element={<BlogList />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
 
 
    
