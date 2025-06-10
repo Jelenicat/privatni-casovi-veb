@@ -16,5 +16,8 @@ export default function Blog() {
         ))}
       </ul>
     </div>
-  );
+  
+);
+console.log("📝 Markdown fajlovi:", files);
+
 }
