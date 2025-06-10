@@ -28,9 +28,11 @@ export async function getStaticPaths() {
   const response = await fetch(`${siteUrl}/blog/list.json`);
   const files = await response.json();
 
-  console.log("📝 Lista blog postova:", files); // Debug log
+  console.log("📝 Lista dostupnih blog postova:", files); // Debug log
 
-  const paths = files.map(file => ({ params: { slug: file.replace('.md', '') } }));
+  const paths = files.map(file => ({
+    params: { slug: file.replace('.md', '') } // Uklanjamo .md ekstenziju!
+  }));
 
   return { paths, fallback: 'blocking' };
 }
