@@ -1,11 +1,12 @@
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
-export default function BlogPost({ content }) {
+export default function BlogPost({ content, title, date }) {
   return (
     <div>
-      <h1>{content.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: marked(content.body) }} />
+      <h1>{title}</h1>
+      <p>{date}</p>
+      <div dangerouslySetInnerHTML={{ __html: marked(content) }} />
     </div>
   );
 }
@@ -15,11 +16,11 @@ export async function getStaticProps({ params }) {
   const res = await fetch(`${siteUrl}/blog/${params.slug}.md`);
   const fileContent = await res.text();
 
-  const { content, data } = matter(fileContent);
-  
-  console.log("📝 Blog post:", params.slug, content);
+  console.log("📝 Učitavanje blog posta:", params.slug, fileContent); // Debug log
 
-  return { props: { content: data, body: content } };
+  const { content, data } = matter(fileContent);
+
+  return { props: { content, title: data.title || 'Blog Post', date: data.date || '' } };
 }
 
 export async function getStaticPaths() {
@@ -27,7 +28,9 @@ export async function getStaticPaths() {
   const response = await fetch(`${siteUrl}/blog/list.json`);
   const files = await response.json();
 
+  console.log("📝 Lista blog postova:", files); // Debug log
+
   const paths = files.map(file => ({ params: { slug: file.replace('.md', '') } }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: 'blocking' };
 }
