@@ -1,9 +1,21 @@
-import fs from 'fs';
-import path from 'path';
+import { useState, useEffect } from 'react';
 
 export default function Blog() {
-  const blogDir = path.join(process.cwd(), 'blog');
-  const files = fs.readdirSync(blogDir);
+  const [files, setFiles] = useState([]);
+
+  useEffect(() => {
+    async function fetchBlogPosts() {
+      try {
+        const res = await fetch('/blog/list.json'); // Pretpostavka da postoji list.json sa spiskom fajlova
+        const data = await res.json();
+        setFiles(data);
+      } catch (error) {
+        console.error("❌ Greška pri učitavanju blog postova:", error);
+      }
+    }
+
+    fetchBlogPosts();
+  }, []);
 
   return (
     <div>
@@ -16,8 +28,5 @@ export default function Blog() {
         ))}
       </ul>
     </div>
-  
-);
-console.log("📝 Markdown fajlovi:", files);
-
+  );
 }
