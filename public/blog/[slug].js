@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
 
 export default function BlogPost({ content, data }) {
@@ -13,16 +11,18 @@ export default function BlogPost({ content, data }) {
 }
 
 export async function getStaticProps({ params }) {
-  const filePath = path.join(process.cwd(), 'blog', `${params.slug}.md`);
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  // Koristi fetch umesto fs
+  const res = await fetch(`https://www.pronadjiprofesora.com/blog/${params.slug}.md`);
+  const fileContent = await res.text();
   const { content, data } = matter(fileContent);
 
   return { props: { content, data } };
 }
 
 export async function getStaticPaths() {
-  const blogDir = path.join(process.cwd(), 'blog');
-  const files = fs.readdirSync(blogDir);
+  const response = await fetch(`https://www.pronadjiprofesora.com/blog/`);
+  const files = await response.json(); // Pretpostavka da vraća listu fajlova
+  
   const paths = files.map(file => ({ params: { slug: file.replace('.md', '') } }));
 
   return { paths, fallback: false };
