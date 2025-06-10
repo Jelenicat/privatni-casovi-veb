@@ -11,7 +11,7 @@ export default function KontaktForma() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('https://email-api-vercel-app.vercel.app/api/sendEmail', {
+    const res = await fetch('https://email-api-jelenas-projects-7386403f.vercel.app/api/sendEmail', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ ime, email, poruka, tip: 'kontakt-forma' }),
