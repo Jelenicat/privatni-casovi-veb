@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const posts = [
-  { slug: "prvi-post", title: "Prvi Post" },
-  { slug: "drugi-post", title: "Drugi Post" },
+  { slug: 'moj-prvi-post', title: 'Moj prvi blog post' },
+  { slug: 'drugi-post', title: 'Drugi post' },
 ];
 
 export default function BlogList() {
@@ -10,7 +11,7 @@ export default function BlogList() {
     <div>
       <h1>Blog</h1>
       <ul>
-        {posts.map((post) => (
+        {posts.map(post => (
           <li key={post.slug}>
             <Link to={`/blog/${post.slug}`}>{post.title}</Link>
           </li>

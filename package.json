@@ -13,6 +13,7 @@
     "react-calendar": "^5.1.0",
     "react-dom": "^19.1.0",
     "react-helmet": "^6.1.0",
+    "react-markdown": "^10.1.0",
     "react-router-dom": "^7.6.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
@@ -42,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.4",
     "tailwindcss": "^4.1.8"
