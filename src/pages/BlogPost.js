@@ -3,10 +3,8 @@ import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { Helmet } from 'react-helmet';
 
-// Mapa slugova i putanja do Markdown fajlova
 const postMap = {
   'moj-prvi-post': '/posts/moj-prvi-post.md',
-  // Dodaj više ako budeš imala
 };
 
 export default function BlogPost() {
@@ -22,7 +20,6 @@ export default function BlogPost() {
         .then((text) => {
           setContent(text);
 
-          // Parsiramo naslov i opis iz prvih linija Markdown fajla
           const lines = text.split('\n');
           const titleLine = lines.find(line => line.startsWith('# '));
           const descriptionLine = lines.find(line => line.startsWith('> '));
@@ -40,13 +37,10 @@ export default function BlogPost() {
   }, [slug]);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div className="bg-black text-white min-h-screen">
       <Helmet>
         <title>{postTitle || 'Blog'} | Pronađi profesora</title>
-        <meta
-          name="description"
-          content={postDescription || 'Pročitajte zanimljive blog postove o učenju, predavanjima i edukaciji.'}
-        />
+        <meta name="description" content={postDescription || 'Blog o privatnim časovima i obrazovanju.'} />
         <meta property="og:title" content={`${postTitle} | Pronađi profesora`} />
         <meta property="og:description" content={postDescription} />
         <meta property="og:type" content="article" />
@@ -54,22 +48,29 @@ export default function BlogPost() {
         <meta property="og:image" content={`https://www.pronadjiprofesora.com/posts/images/${slug}.png`} />
       </Helmet>
 
-      {/* HERO SEKCIONI */}
-      <div className="text-center mb-10">
+      <section className="relative">
         <img
           src={`/posts/images/${slug}.png`}
+          className="w-full h-[450px] object-cover brightness-75"
           alt="Naslovna slika"
-          className="w-full max-h-[400px] object-cover rounded-2xl shadow-lg mb-8"
         />
-        <h1 className="text-4xl font-extrabold tracking-tight text-pink-500 mb-2">
-          {postTitle}
-        </h1>
-        <p className="text-lg text-gray-400">{postDescription}</p>
-      </div>
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
+          <h1 className="text-5xl font-extrabold text-pink-500 mb-4 drop-shadow-lg">{postTitle}</h1>
+          <p className="text-lg text-white max-w-2xl">{postDescription}</p>
+        </div>
+      </section>
 
-      {/* SADRŽAJ */}
-      <div className="prose prose-lg prose-p:leading-relaxed prose-headings:font-semibold dark:prose-invert max-w-none">
+      <article className="prose prose-invert prose-lg max-w-3xl mx-auto px-6 py-16">
         <ReactMarkdown>{content}</ReactMarkdown>
+      </article>
+
+      <div className="text-center py-10">
+        <a
+          href="/blog"
+          className="inline-block border border-pink-500 text-pink-500 px-6 py-2 rounded-full hover:bg-pink-500 hover:text-black transition"
+        >
+          ← Nazad na blog
+        </a>
       </div>
     </div>
   );
