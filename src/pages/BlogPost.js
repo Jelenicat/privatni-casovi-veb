@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 
 const postMap = {
   'moj-prvi-post': '/posts/moj-prvi-post.md',
+  // Dodaj i ostale postove ako ih imaš
 };
 
 export default function BlogPost() {
@@ -37,10 +38,16 @@ export default function BlogPost() {
   }, [slug]);
 
   return (
-    <div className="bg-[#0c0c0c] text-white min-h-screen font-sans">
+    <div className="max-w-4xl mx-auto p-6">
       <Helmet>
         <title>{postTitle || 'Blog'} | Pronađi profesora</title>
-        <meta name="description" content={postDescription || 'Blog o privatnim časovima i obrazovanju.'} />
+        <meta
+          name="description"
+          content={
+            postDescription ||
+            'Pročitajte zanimljive blog postove o učenju, predavanjima i edukaciji.'
+          }
+        />
         <meta property="og:title" content={`${postTitle} | Pronađi profesora`} />
         <meta property="og:description" content={postDescription} />
         <meta property="og:type" content="article" />
@@ -48,39 +55,22 @@ export default function BlogPost() {
         <meta property="og:image" content={`https://www.pronadjiprofesora.com/posts/images/${slug}.png`} />
       </Helmet>
 
-      {/* Hero Section */}
-      <section className="relative h-[500px]">
+      {/* HERO sekcija */}
+      <div className="text-center mb-12">
         <img
           src={`/posts/images/${slug}.png`}
           alt="Naslovna slika"
-          className="w-full h-full object-cover brightness-75"
+          className="w-full h-[300px] object-cover rounded-2xl shadow-md mb-6"
         />
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
-          <h1 className="text-5xl font-bold text-pink-500 mb-4 drop-shadow-lg">{postTitle}</h1>
-          <p className="text-lg text-gray-200 max-w-2xl italic">{postDescription}</p>
-        </div>
-      </section>
+        <h1 className="text-5xl font-extrabold text-pink-500 mb-4 tracking-tight leading-tight">
+          {postTitle}
+        </h1>
+        <p className="text-lg text-gray-400 max-w-2xl mx-auto">{postDescription}</p>
+      </div>
 
-      {/* Text + Image Split Section */}
-      <section className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto px-6 py-20">
-        <div>
-          <img src={`/posts/images/${slug}.png`} alt="Ilustracija posta" className="rounded-xl shadow-lg" />
-        </div>
-        <div>
-          <div className="prose prose-invert prose-lg">
-            <ReactMarkdown>{content}</ReactMarkdown>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Button */}
-      <div className="text-center pb-20">
-        <a
-          href="/blog"
-          className="inline-block border border-pink-500 text-pink-500 px-6 py-2 rounded-full hover:bg-pink-500 hover:text-black transition"
-        >
-          ← Nazad na blog
-        </a>
+      {/* SADRŽAJ */}
+      <div className="prose prose-lg dark:prose-invert max-w-none">
+        <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     </div>
   );
