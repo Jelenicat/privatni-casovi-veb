@@ -20,3 +20,8 @@ export default function BlogList() {
     </div>
   );
 }
+useEffect(() => {
+  fetch('/posts/index.json')
+    .then(res => res.json())
+    .then(setPosts);
+}, []);

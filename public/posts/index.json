@@ -1,0 +1,14 @@
+[
+  {
+    "slug": "moj-prvi-post",
+    "title": "Moj prvi blog post",
+    "description": "Ovo je sadržaj tvog prvog posta.",
+    "date": "2025-06-17"
+  },
+  {
+    "slug": "drugi-post",
+    "title": "Drugi post",
+    "description": "Tema drugog posta...",
+    "date": "2025-06-20"
+  }
+]

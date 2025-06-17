@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import { Helmet } from 'react-helmet';
+import matter from 'gray-matter';
+
+const { content, data } = matter(text);
+
+<Helmet>
+  <title>{naslov} | Pronađi profesora</title>
+  <meta name="description" content={opis} />
+</Helmet>
 
 const postMap = {
   'moj-prvi-post': '/posts/moj-prvi-post.md',
