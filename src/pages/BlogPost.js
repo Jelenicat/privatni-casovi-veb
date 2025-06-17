@@ -37,7 +37,7 @@ export default function BlogPost() {
   }, [slug]);
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-[#0c0c0c] text-white min-h-screen font-sans">
       <Helmet>
         <title>{postTitle || 'Blog'} | Pronađi profesora</title>
         <meta name="description" content={postDescription || 'Blog o privatnim časovima i obrazovanju.'} />
@@ -48,23 +48,33 @@ export default function BlogPost() {
         <meta property="og:image" content={`https://www.pronadjiprofesora.com/posts/images/${slug}.png`} />
       </Helmet>
 
-      <section className="relative">
+      {/* Hero Section */}
+      <section className="relative h-[500px]">
         <img
           src={`/posts/images/${slug}.png`}
-          className="w-full h-[450px] object-cover brightness-75"
           alt="Naslovna slika"
+          className="w-full h-full object-cover brightness-75"
         />
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
-          <h1 className="text-5xl font-extrabold text-pink-500 mb-4 drop-shadow-lg">{postTitle}</h1>
-          <p className="text-lg text-white max-w-2xl">{postDescription}</p>
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
+          <h1 className="text-5xl font-bold text-pink-500 mb-4 drop-shadow-lg">{postTitle}</h1>
+          <p className="text-lg text-gray-200 max-w-2xl italic">{postDescription}</p>
         </div>
       </section>
 
-      <article className="prose prose-invert prose-lg max-w-3xl mx-auto px-6 py-16">
-        <ReactMarkdown>{content}</ReactMarkdown>
-      </article>
+      {/* Text + Image Split Section */}
+      <section className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto px-6 py-20">
+        <div>
+          <img src={`/posts/images/${slug}.png`} alt="Ilustracija posta" className="rounded-xl shadow-lg" />
+        </div>
+        <div>
+          <div className="prose prose-invert prose-lg">
+            <ReactMarkdown>{content}</ReactMarkdown>
+          </div>
+        </div>
+      </section>
 
-      <div className="text-center py-10">
+      {/* CTA Button */}
+      <div className="text-center pb-20">
         <a
           href="/blog"
           className="inline-block border border-pink-500 text-pink-500 px-6 py-2 rounded-full hover:bg-pink-500 hover:text-black transition"
