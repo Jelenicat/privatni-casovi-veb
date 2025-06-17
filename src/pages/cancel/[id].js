@@ -73,7 +73,7 @@ export default function CancelReservation() {
               vreme: data.vreme,
               profesorEmail: profesorData.email,
               nacinCasa: data.nacinCasa || '',
-               email: profesorData.email
+        
             }),
           });
         }
