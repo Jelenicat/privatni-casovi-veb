@@ -1,44 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import matter from 'gray-matter';
-import { marked } from 'marked';
+import ReactMarkdown from 'react-markdown';
 
 const postMap = {
   'moj-prvi-post': '/posts/moj-prvi-post.md',
-  // Dodaj i druge ako imaš još
+  // Dodaj i ostale postove ovde ako ih imaš
 };
 
 export default function BlogPost() {
   const { slug } = useParams();
-  const [data, setData] = useState(null);
+  const [content, setContent] = useState('');
 
   useEffect(() => {
     if (postMap[slug]) {
       fetch(postMap[slug])
         .then(res => res.text())
-        .then(raw => {
-          const { content, data: meta } = matter(raw);
-          const html = marked(content);
-          setData({ text: html, ...meta });
-        })
-        .catch(err => console.error('Error loading post:', err));
+        .then(setContent)
+        .catch(err => {
+          console.error('Greška pri učitavanju posta:', err);
+          setContent('# Greška\nPost nije učitan.');
+        });
     } else {
-      setData({ text: '<p>Post not found</p>' });
+      setContent('# Nepostojeći post\nOvaj post ne postoji.');
     }
   }, [slug]);
 
-  if (!data) return <div className="p-4">Učitavanje...</div>;
-
   return (
-    <div className="p-4 max-w-3xl mx-auto">
-      <Helmet>
-        <title>{data.naslov} | Pronađi profesora</title>
-        <meta name="description" content={data.opis} />
-      </Helmet>
-      <h1 className="text-3xl font-bold mb-2">{data.naslov}</h1>
-      <p className="text-gray-500 mb-4">{data.opis}</p>
-      <div dangerouslySetInnerHTML={{ __html: data.text }} />
+    <div className="prose dark:prose-invert max-w-3xl mx-auto p-6">
+      <ReactMarkdown>{content}</ReactMarkdown>
     </div>
   );
 }
