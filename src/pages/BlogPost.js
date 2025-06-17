@@ -3,9 +3,10 @@ import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { Helmet } from 'react-helmet';
 
+// Mapa slugova i putanja do Markdown fajlova
 const postMap = {
   'moj-prvi-post': '/posts/moj-prvi-post.md',
-  // Dodaj i ostale postove ako ih imaš
+  // Dodaj još postova ako ih budeš imala
 };
 
 export default function BlogPost() {
@@ -38,7 +39,7 @@ export default function BlogPost() {
   }, [slug]);
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto">
       <Helmet>
         <title>{postTitle || 'Blog'} | Pronađi profesora</title>
         <meta
@@ -48,6 +49,8 @@ export default function BlogPost() {
             'Pročitajte zanimljive blog postove o učenju, predavanjima i edukaciji.'
           }
         />
+
+        {/* Open Graph za deljenje */}
         <meta property="og:title" content={`${postTitle} | Pronađi profesora`} />
         <meta property="og:description" content={postDescription} />
         <meta property="og:type" content="article" />
@@ -56,20 +59,20 @@ export default function BlogPost() {
       </Helmet>
 
       {/* HERO sekcija */}
-      <div className="text-center mb-12">
+      <div className="relative w-full h-[300px] sm:h-[400px] rounded-2xl overflow-hidden mb-10 shadow-xl">
         <img
           src={`/posts/images/${slug}.png`}
           alt="Naslovna slika"
-          className="w-full h-[300px] object-cover rounded-2xl shadow-md mb-6"
+          className="w-full h-full object-cover"
         />
-        <h1 className="text-5xl font-extrabold text-pink-500 mb-4 tracking-tight leading-tight">
-          {postTitle}
-        </h1>
-        <p className="text-lg text-gray-400 max-w-2xl mx-auto">{postDescription}</p>
+        <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-4">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-3">{postTitle}</h1>
+          <p className="text-lg sm:text-xl text-gray-200 max-w-2xl">{postDescription}</p>
+        </div>
       </div>
 
       {/* SADRŽAJ */}
-      <div className="prose prose-lg dark:prose-invert max-w-none">
+      <div className="prose prose-lg dark:prose-invert max-w-none px-6 pb-16 leading-relaxed text-gray-100">
         <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     </div>
