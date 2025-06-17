@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import mojPrviPost from '../posts/moj-prvi-post.md'; // Adjust path as needed
 
 const postMap = {
-  'moj-prvi-post': mojPrviPost,
-  // Add more posts here, e.g., 'drugi-post': require('../posts/drugi-post.md')
+  'moj-prvi-post': '/posts/moj-prvi-post.md',
+  // Dodaj i druge ako želiš
 };
 
 export default function BlogPost() {
@@ -24,8 +23,7 @@ export default function BlogPost() {
   }, [slug]);
 
   return (
-    <div>
-      <h1>{slug.replace(/-/g, ' ')}</h1>
+    <div className="p-4 max-w-3xl mx-auto">
       <ReactMarkdown>{content}</ReactMarkdown>
     </div>
   );
