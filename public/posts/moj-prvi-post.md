@@ -1,58 +1,56 @@
 # 🎓 Kako funkcioniše **Pronađi profesora**?
 
-Dobrodošli! 👋
+Zdravo! 👋
 
-U ovom uvodnom blog postu pokazaćemo vam **kako najlakše pronaći idealnog profesora za privatne časove** putem naše platforme.
+Dobrodošli na naš blog! U ovom uvodnom postu želimo da vam pokažemo  
+**kako najlakše pronaći profesora koji vam zaista odgovara** – brzo, jednostavno i pouzdano.
 
 ---
 
 ## 🔍 Zašto smo napravili ovu platformu?
 
-Zato što je danas teško:
+Jer znamo koliko to ume da bude frustrirajuće:
 
-- naći **kvalitetnog profesora** bez lične preporuke
-- organizovati termin koji svima odgovara
-- znati da li je profesor zaista stručan
+- ❌ Nemaš preporuku za dobrog profesora  
+- ❌ Termini se stalno mimoilaze  
+- ❌ Ne znaš ko je zapravo stručan  
 
-Zato je tu **Pronađi profesora** – da to sve rešimo za vas.
-
----
-
-## ⚙️ Kako funkcioniše?
-
-1. **Izaberete nivo obrazovanja** – osnovna, srednja škola ili fakultet.
-2. **Odaberete predmet** koji vam treba.
-3. **Pregledate profesore** po lokaciji, ceni, ocenama.
-4. **Zakažete čas direktno** iz njihovog kalendara!
-
-> 📅 *Bez poziva, bez poruka, samo klik – i čas je rezervisan.*
+Zato smo napravili **Pronađi profesora** – da te oslobodimo svih tih muka.
 
 ---
 
-## 💡 Benefiti za vas
+## ⚙️ Kako sve funkcioniše?
 
-✅ Profesori sa ocenama i komentarima  
-✅ Online ili uživo nastava  
-✅ Dostupni kalendari i termini  
-✅ Email potvrda i podsetnici  
-✅ Mogućnost **besplatnog otkazivanja**
+1. **Izabereš nivo obrazovanja** – osnovna, srednja škola ili fakultet  
+2. **Odabereš predmet** koji ti treba  
+3. **Pregledaš dostupne profesore** po ceni, oceni i lokaciji  
+4. **Klikneš na slobodan termin** u kalendaru – i to je to! ✅
 
----
-
-## 📞 Spremni da pronađete svog profesora?
-
-Kliknite na dugme ispod i započnite pretragu:
-
-👉 [Pronađi profesora sada](https://www.pronadjiprofesora.com)
+> 💡 *Bez poruka, bez poziva, bez stresa.*
 
 ---
 
-## ❤️ Hvala vam!
+## 🎁 Šta dobijaš kao korisnik?
 
-Ovo je samo prvi post – uskoro pišemo i o:
+✨ Jasne cene i ocene  
+✨ Direktno zakazivanje  
+✨ Email potvrde i podsetnici  
+✨ Online i uživo nastava  
+✨ Mogućnost ocenjivanja profesora
 
-- tehnikama efikasnog učenja
-- roditeljskim savetima
-- iskustvima profesora i učenika
+---
 
-Budite uz nas! 🌟
+## 🚀 Spreman/na da pronađeš svog profesora?
+
+👉 [Klikni ovde i pronađi svog profesora](https://www.pronadjiprofesora.com)
+
+---
+
+## ❤️ Hvala ti!
+
+Ovo je tek početak. Uskoro stižu novi postovi:  
+📘 Saveti za učenje  
+🧠 Kako ostati motivisan  
+🎯 Priče naših korisnika
+
+Vidimo se uskoro!
