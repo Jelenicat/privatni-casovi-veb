@@ -40,12 +40,13 @@ export default function BlogPost() {
   }, [slug]);
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <Helmet>
         <title>{postTitle || 'Blog'} | Pronađi profesora</title>
-        <meta name="description" content={postDescription || 'Pročitajte zanimljive blog postove o učenju, predavanjima i edukaciji.'} />
-
-        {/* Open Graph za deljenje */}
+        <meta
+          name="description"
+          content={postDescription || 'Pročitajte zanimljive blog postove o učenju, predavanjima i edukaciji.'}
+        />
         <meta property="og:title" content={`${postTitle} | Pronađi profesora`} />
         <meta property="og:description" content={postDescription} />
         <meta property="og:type" content="article" />
@@ -53,19 +54,21 @@ export default function BlogPost() {
         <meta property="og:image" content={`https://www.pronadjiprofesora.com/posts/images/${slug}.png`} />
       </Helmet>
 
-      {/* HERO */}
-      <div className="text-center mb-8">
+      {/* HERO SEKCIONI */}
+      <div className="text-center mb-10">
         <img
           src={`/posts/images/${slug}.png`}
           alt="Naslovna slika"
-          className="w-full max-h-[400px] object-cover rounded-2xl shadow-lg mb-6"
+          className="w-full max-h-[400px] object-cover rounded-2xl shadow-lg mb-8"
         />
-        <h1 className="text-4xl font-bold text-gray-800 mb-2">{postTitle}</h1>
-        <p className="text-lg text-gray-600">{postDescription}</p>
+        <h1 className="text-4xl font-extrabold tracking-tight text-pink-500 mb-2">
+          {postTitle}
+        </h1>
+        <p className="text-lg text-gray-400">{postDescription}</p>
       </div>
 
       {/* SADRŽAJ */}
-      <div className="prose prose-lg dark:prose-invert max-w-none">
+      <div className="prose prose-lg prose-p:leading-relaxed prose-headings:font-semibold dark:prose-invert max-w-none">
         <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     </div>
