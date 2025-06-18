@@ -1,3 +1,6 @@
+---
+image: "/posts/images/slikaDrugiPost.png"
+---
 Ako tražiš kvalitetne privatne časove – aplikacija **Pronađi profesora** ti omogućava da u par jednostavnih koraka pronađeš idealnog profesora.
 
 ## 🧑‍💻 1. Izaberi način izvođenja časa

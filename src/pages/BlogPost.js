@@ -2,32 +2,30 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { Helmet } from 'react-helmet';
+import matter from 'gray-matter';
 
 const postMap = {
   'moj-prvi-post': '/posts/moj-prvi-post.md',
-  'drugi-post': '/posts/drugi-post.md' // ⬅⬅⬅ Dodaj ovo
+  'drugi-post': '/posts/drugi-post.md'
 };
 
 export default function BlogPost() {
   const { slug } = useParams();
   const [content, setContent] = useState('');
-  const [postTitle, setPostTitle] = useState('');
-  const [postDescription, setPostDescription] = useState('');
+  const [meta, setMeta] = useState({ title: '', description: '', image: '' });
 
   useEffect(() => {
     if (postMap[slug]) {
       fetch(postMap[slug])
         .then(res => res.text())
-        .then((text) => {
-          const lines = text.split('\n');
-          const titleLine = lines.find(line => line.startsWith('# '));
-          const descriptionLine = lines.find(line => line.startsWith('> '));
-
-          if (titleLine) setPostTitle(titleLine.replace('# ', '').trim());
-          if (descriptionLine) setPostDescription(descriptionLine.replace('> ', '').trim());
-
-          const cleanedLines = lines.filter(line => !line.startsWith('# '));
-          setContent(cleanedLines.join('\n'));
+        .then(text => {
+          const { content, data } = matter(text);
+          setContent(content);
+          setMeta({
+            title: data.title || '',
+            description: data.description || '',
+            image: data.image || `/posts/images/${slug}.png`
+          });
         })
         .catch(err => {
           console.error('Greška pri učitavanju posta:', err);
@@ -38,35 +36,29 @@ export default function BlogPost() {
     }
   }, [slug]);
 
-  // Pripremi naslov sa stilizovanim delom
-  const formattedTitle = postTitle
-    ? postTitle.replace(/(Pronađi profesora\??)/, `<span class="italic text-white">$1</span>`)
-    : '';
-
   return (
     <div className="w-full bg-black text-white">
       <Helmet>
-        <title>{postTitle || 'Blog'} | Pronađi profesora</title>
-        <meta name="description" content={postDescription || 'Pročitajte zanimljive blog postove o učenju, predavanjima i edukaciji.'} />
-        <meta property="og:title" content={`${postTitle} | Pronađi profesora`} />
-        <meta property="og:description" content={postDescription} />
+        <title>{meta.title || 'Blog'} | Pronađi profesora</title>
+        <meta name="description" content={meta.description || 'Pročitajte zanimljive blog postove o učenju, predavanjima i edukaciji.'} />
+        <meta property="og:title" content={`${meta.title} | Pronađi profesora`} />
+        <meta property="og:description" content={meta.description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://www.pronadjiprofesora.com/blog/${slug}`} />
-        <meta property="og:image" content={`https://www.pronadjiprofesora.com/posts/images/${slug}.png`} />
+        <meta property="og:image" content={`https://www.pronadjiprofesora.com${meta.image}`} />
       </Helmet>
 
-      {/* HERO sekcija sa stilizovanim naslovom */}
+      {/* HERO sekcija sa slikom i naslovom */}
       <div className="relative w-full h-[400px] sm:h-[480px] overflow-hidden shadow-lg">
         <img
-          src={`/posts/images/${slug}.png`}
-          alt={`Naslovna slika - ${postTitle}`}
+          src={meta.image}
+          alt={`Naslovna slika - ${meta.title}`}
           className="w-full h-full object-cover opacity-80"
         />
         <div className="absolute inset-0 bg-black/60 flex justify-center items-center text-center px-4">
-          <h1
-            className="text-3xl sm:text-5xl font-extrabold text-pink-400 drop-shadow-lg"
-            dangerouslySetInnerHTML={{ __html: formattedTitle }}
-          />
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-pink-400 drop-shadow-lg">
+            {meta.title}
+          </h1>
         </div>
       </div>
 
