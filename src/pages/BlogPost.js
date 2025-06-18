@@ -20,11 +20,13 @@ export default function BlogPost() {
         .then(res => res.text())
         .then(text => {
           const { content, data } = matter(text);
+          const fallbackImage = `/posts/images/${slug}.png`;
+
           setContent(content);
           setMeta({
             title: data.title || '',
             description: data.description || '',
-            image: data.image || `/posts/images/${slug}.png`
+            image: data.image || fallbackImage
           });
         })
         .catch(err => {
@@ -36,6 +38,10 @@ export default function BlogPost() {
     }
   }, [slug]);
 
+  const absoluteImageUrl = meta.image.startsWith('http')
+    ? meta.image
+    : `https://www.pronadjiprofesora.com${meta.image}`;
+
   return (
     <div className="w-full bg-black text-white">
       <Helmet>
@@ -45,13 +51,13 @@ export default function BlogPost() {
         <meta property="og:description" content={meta.description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://www.pronadjiprofesora.com/blog/${slug}`} />
-        <meta property="og:image" content={`https://www.pronadjiprofesora.com${meta.image}`} />
+        <meta property="og:image" content={absoluteImageUrl} />
       </Helmet>
 
       {/* HERO sekcija sa slikom i naslovom */}
       <div className="relative w-full h-[400px] sm:h-[480px] overflow-hidden shadow-lg">
         <img
-          src={meta.image}
+          src={absoluteImageUrl}
           alt={`Naslovna slika - ${meta.title}`}
           className="w-full h-full object-cover opacity-80"
         />
