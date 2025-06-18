@@ -6,7 +6,6 @@ import { Helmet } from 'react-helmet';
 // Mapa slugova i putanja do Markdown fajlova
 const postMap = {
   'moj-prvi-post': '/posts/moj-prvi-post.md',
-  // Dodaj još postova ako ih budeš imala
 };
 
 export default function BlogPost() {
@@ -49,8 +48,6 @@ export default function BlogPost() {
             'Pročitajte zanimljive blog postove o učenju, predavanjima i edukaciji.'
           }
         />
-
-        {/* Open Graph za deljenje */}
         <meta property="og:title" content={`${postTitle} | Pronađi profesora`} />
         <meta property="og:description" content={postDescription} />
         <meta property="og:type" content="article" />
@@ -59,20 +56,21 @@ export default function BlogPost() {
       </Helmet>
 
       {/* HERO sekcija */}
-      <div className="relative w-full h-[300px] sm:h-[400px] rounded-2xl overflow-hidden mb-10 shadow-xl">
+      <div className="relative w-full h-[300px] sm:h-[400px] overflow-hidden mb-10 shadow-xl">
         <img
           src={`/posts/images/${slug}.png`}
           alt="Naslovna slika"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-4">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-3">{postTitle}</h1>
-          <p className="text-lg sm:text-xl text-gray-200 max-w-2xl">{postDescription}</p>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-pink-400 drop-shadow-lg">
+            Kako funkcioniše <span className="text-white italic">Pronađi profesora</span>?
+          </h1>
         </div>
       </div>
 
       {/* SADRŽAJ */}
-      <div className="prose prose-lg dark:prose-invert max-w-none px-6 pb-16 leading-relaxed text-gray-100">
+      <div className="prose prose-lg dark:prose-invert max-w-none px-6 pb-16 leading-relaxed text-gray-100 prose-headings:text-pink-400 prose-h2:text-pink-400">
         <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     </div>
