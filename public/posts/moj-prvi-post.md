@@ -1,6 +1,6 @@
 # Kako funkcioniše Pronađi profesora?
 
-> Pronađi profesora je platforma za brzo i jednostavno zakazivanje privatnih časova – online ili uživo. 👩‍🏫✨
+Pronađi profesora je platforma za brzo i jednostavno zakazivanje privatnih časova – online ili uživo. 👩‍🏫✨
 
 ---
 
@@ -13,7 +13,7 @@ Bez oglasnika, bez preporuka iz treće ruke, samo direktno, brzo i pouzdano.
 
 ## ⚙️ Kako funkcioniše?
 
-1. 👧 **Učenik** bira nivo obrazovanja, grad i predmet
+1. 👧 **Učenik** bira nivo obrazovanja, način izvođenja časa, grad i predmet
 2. 📅 Vidi dostupne profesore i njihove termine
 3. 📨 Zakazuje čas bez registracije – odmah, za par klikova
 

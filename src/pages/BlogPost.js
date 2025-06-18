@@ -25,10 +25,7 @@ export default function BlogPost() {
           if (titleLine) setPostTitle(titleLine.replace('# ', '').trim());
           if (descriptionLine) setPostDescription(descriptionLine.replace('> ', '').trim());
 
-          // ukloni naslov (i opcionalno opis ako ne želiš da se prikazuje ispod)
-          const cleanedLines = lines.filter(
-            line => !line.startsWith('# ') // && !line.startsWith('> ')  ← ako hoćeš da i opis ne prikazuje
-          );
+          const cleanedLines = lines.filter(line => !line.startsWith('# '));
           setContent(cleanedLines.join('\n'));
         })
         .catch(err => {
@@ -39,6 +36,11 @@ export default function BlogPost() {
       setContent('# Nepostojeći post\nOvaj post ne postoji.');
     }
   }, [slug]);
+
+  // Pripremi naslov sa stilizovanim delom
+  const formattedTitle = postTitle
+    ? postTitle.replace(/(Pronađi profesora\??)/, `<span class="italic text-white">$1</span>`)
+    : '';
 
   return (
     <div className="w-full bg-black text-white">
@@ -52,7 +54,7 @@ export default function BlogPost() {
         <meta property="og:image" content={`https://www.pronadjiprofesora.com/posts/images/${slug}.png`} />
       </Helmet>
 
-      {/* HERO sekcija sa naslovom */}
+      {/* HERO sekcija sa stilizovanim naslovom */}
       <div className="relative w-full h-[400px] sm:h-[480px] overflow-hidden shadow-lg">
         <img
           src={`/posts/images/${slug}.png`}
@@ -60,9 +62,10 @@ export default function BlogPost() {
           className="w-full h-full object-cover opacity-80"
         />
         <div className="absolute inset-0 bg-black/60 flex justify-center items-center text-center px-4">
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-pink-400 drop-shadow-lg">
-            {postTitle}
-          </h1>
+          <h1
+            className="text-3xl sm:text-5xl font-extrabold text-pink-400 drop-shadow-lg"
+            dangerouslySetInnerHTML={{ __html: formattedTitle }}
+          />
         </div>
       </div>
 
