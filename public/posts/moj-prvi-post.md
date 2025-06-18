@@ -1,10 +1,8 @@
 ---
-title: "Pronađi profesora"
+title: "Kako funkcioniše Pronađi profesora?"
 description: "Kako funkcioniše aplikacija Pronađi profesora?"
 image: "/posts/images/moj-prvi-post.png"
 ---
-
-# Kako funkcioniše Pronađi profesora?
 
 Pronađi profesora je platforma za brzo i jednostavno zakazivanje privatnih časova – online ili uživo. 👩‍🏫✨
 
