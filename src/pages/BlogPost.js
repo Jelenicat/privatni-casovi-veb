@@ -18,12 +18,18 @@ export default function BlogPost() {
       fetch(postMap[slug])
         .then(res => res.text())
         .then((text) => {
-          setContent(text);
           const lines = text.split('\n');
           const titleLine = lines.find(line => line.startsWith('# '));
           const descriptionLine = lines.find(line => line.startsWith('> '));
+
           if (titleLine) setPostTitle(titleLine.replace('# ', '').trim());
           if (descriptionLine) setPostDescription(descriptionLine.replace('> ', '').trim());
+
+          // ukloni naslov (i opcionalno opis ako ne želiš da se prikazuje ispod)
+          const cleanedLines = lines.filter(
+            line => !line.startsWith('# ') // && !line.startsWith('> ')  ← ako hoćeš da i opis ne prikazuje
+          );
+          setContent(cleanedLines.join('\n'));
         })
         .catch(err => {
           console.error('Greška pri učitavanju posta:', err);
@@ -46,7 +52,7 @@ export default function BlogPost() {
         <meta property="og:image" content={`https://www.pronadjiprofesora.com/posts/images/${slug}.png`} />
       </Helmet>
 
-      {/* HERO sekcija sa dinamičkim naslovom */}
+      {/* HERO sekcija sa naslovom */}
       <div className="relative w-full h-[400px] sm:h-[480px] overflow-hidden shadow-lg">
         <img
           src={`/posts/images/${slug}.png`}
