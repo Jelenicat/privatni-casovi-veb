@@ -8,7 +8,8 @@ window.Buffer = Buffer;
 
 const postMap = {
   'moj-prvi-post': '/posts/moj-prvi-post.md',
-  'drugi-post': '/posts/drugi-post.md'
+  'drugi-post': '/posts/drugi-post.md',
+  'kako-postati-profesor': '/posts/kako-postati-profesor.md' // ⬅ dodaj ovu liniju
 };
 
 export default function BlogPost() {
