@@ -47,7 +47,7 @@ export default function BlogPost() {
       </Helmet>
 
       {/* HERO sekcija */}
-      <div className="relative w-full h-[380px] sm:h-[480px] overflow-hidden shadow-lg">
+      <div className="relative w-full h-[400px] sm:h-[480px] overflow-hidden shadow-lg">
         <img
           src={`/posts/images/${slug}.png`}
           alt="Naslovna slika"
@@ -61,7 +61,7 @@ export default function BlogPost() {
       </div>
 
       {/* SADRŽAJ */}
-      <div className="prose prose-lg dark:prose-invert max-w-3xl mx-auto px-6 pb-16 leading-relaxed text-gray-100 prose-headings:text-pink-400 prose-a:text-pink-400">
+      <div className="prose prose-lg dark:prose-invert max-w-3xl mx-auto px-6 mt-12 pb-16 leading-relaxed text-gray-100 prose-headings:text-pink-400 prose-a:text-pink-400">
         <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     </div>
