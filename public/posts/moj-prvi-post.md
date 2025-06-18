@@ -1,4 +1,4 @@
-# Kako funkcioniše **Pronađi profesora**
+
 
 Dobrodošli na zvanični blog naše platforme.  
 Ovde ćete saznati kako u nekoliko klikova možete pronaći profesora koji vam potpuno odgovara – po znanju, stilu i dostupnosti.
