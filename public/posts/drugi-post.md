@@ -1,3 +1,9 @@
+---
+title: "Kako zakazati čas?"
+description: "Uputstvo za učenike kako da pronađu profesora i zakažu čas online ili uživo."
+image: "/posts/images/slikaDrugiPost.png"
+---
+
 Ako tražiš kvalitetne privatne časove – aplikacija **Pronađi profesora** ti omogućava da u par jednostavnih koraka pronađeš idealnog profesora.
 
 ## 🧑‍💻 1. Izaberi način izvođenja časa
