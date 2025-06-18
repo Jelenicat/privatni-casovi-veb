@@ -5,10 +5,11 @@
     "description": "Kako funkcioniše aplikacija Pronađi profesora?",
     "date": "2025-06-17"
   },
-  {
-    "slug": "drugi-post",
-    "title": "Drugi post",
-    "description": "Tema drugog posta...",
-    "date": "2025-06-20"
-  }
+{
+  "slug": "drugi-post",
+  "title": "Kako zakazati čas?",
+  "description": "Uputstvo za učenike kako da pronađu profesora i zakažu čas online ili uživo.",
+  "date": "2025-06-20"
+}
+
 ]
