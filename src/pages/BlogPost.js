@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 
 const postMap = {
   'moj-prvi-post': '/posts/moj-prvi-post.md',
+  'drugi-post': '/posts/drugi-post.md' // ⬅⬅⬅ Dodaj ovo
 };
 
 export default function BlogPost() {
