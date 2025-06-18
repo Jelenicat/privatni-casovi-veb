@@ -1,9 +1,3 @@
----
-title: "Kako koristiti aplikaciju kao učenik"
-description: "Uputstvo za učenike kako da pronađu profesora i zakažu čas online ili uživo."
-date: "2025-06-20"
----
-
 Ako tražiš kvalitetne privatne časove – aplikacija **Pronađi profesora** ti omogućava da u par jednostavnih koraka pronađeš idealnog profesora.
 
 ## 🧑‍💻 1. Izaberi način izvođenja časa
@@ -54,8 +48,6 @@ Za **online časove**, automatski ćeš dobiti link za video poziv.
 Tri sata nakon završenog časa, dobićeš mejl sa pozivom da oceniš profesora i ostaviš komentar.
 
 Tvoja ocena pomaže drugim učenicima da lakše izaberu pravog profesora, a profesorima daje korisne povratne informacije.
-
----
 
 🧠 **Pronađi profesora – lako, brzo i pouzdano!**  
 Tvoj put do boljih ocena i znanja počinje ovde.
