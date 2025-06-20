@@ -24,7 +24,7 @@ export default function BlogList() {
 
       {/* Overlay za naslov */}
       <div className="text-center py-12 bg-black bg-opacity-70">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-pink-400">Blog</h1>
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-pink-400">Pitanja i odgovori</h1>
         <p className="mt-4 text-gray-300">Saveti, iskustva i korisni tekstovi za učenike i profesore</p>
       </div>
 
