@@ -8,11 +8,10 @@ export default function Navbar() {
         <Link to="/">Pronađi profesora</Link>
       </div>
 
-      <div className="flex gap-6 text-lg">
-        <Link to="/" className="hover:text-pink-400 transition">Početna</Link>
-        <Link to="/mode" className="hover:text-pink-400 transition">Učenici</Link>
-        <Link to="/auth-choice" className="hover:text-pink-400 transition">Profesori</Link>
-        <Link to="/blog" className="hover:text-pink-400 transition">Blog</Link>
+      <div className="text-lg">
+        <Link to="/blog" className="hover:text-pink-400 transition">
+          Pitanja i odgovori
+        </Link>
       </div>
     </nav>
   );
